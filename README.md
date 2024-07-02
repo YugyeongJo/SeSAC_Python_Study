@@ -13,5 +13,5 @@
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
-|1|Practice|[temp.html](./docs/temp.html)|하위경로 이동 연습||
-|2|ALL|[main.html](./docs/main.html)|Web 학습노트||
+|00|Intrduction|[Python_Introduction_0701.ipynb](./docs/00_Python_Introduction_0701.ipynb)|Markdown문법 학습<br>파일 생성 방법 학습<br>파이썬 오류 학습 ||
+|01|Basic(Variable)|[Python_Basic(Variable)_0701.ipynb](./docs/01_Python_Basic(Variable)_0701.ipynb)|파이썬 변수 기초 학습||
