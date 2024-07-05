@@ -23,4 +23,4 @@
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
-|01|Python|[numeral_system](./docs/practice/numeral_system.py)/진법 변환 계산기 함수 예제 실습||
+|01|Python|[numeral_system](./docs/practice/numeral_system.py)|진법 변환 계산기 함수 예제 실습||
