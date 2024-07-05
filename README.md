@@ -19,7 +19,7 @@
 |03|Basic(Control_Statement)|[Python_Basic(Control_Statement)_0702.ipynb](./docs/03_Python_Basic(Control_Statement)_0702.ipynb)|파이썬 제어문 기초 학습||
 |04|Basic(Function)|[Python_Basic(Function)_0703-0705.ipynb](./docs/04_Python_Basic(Function)_0703_0705.ipynb)|파이썬 함수 기초 학습||
 
-### 1) Pracice
+### 2) Pracice
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
