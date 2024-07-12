@@ -23,7 +23,7 @@
 |07|Basic(||||
 |08|Basic(ClassObjectInstance)|[Python_Basic(ClassObjectInstance)_0710.ipynb](./docs/08_Python_Basic(ClassObjectInstance)_0710.ipynb)|파이썬 클래스 객체 인스턴스 기초 학습||
 |09|Basic(Pandas)|[Python_Basic(Pandas)_0710_0711.ipynb](./docs/09_Python_Basic(Pandas)_0710_0711.ipynb)|판다스 기초 학습|Pandas|
-|10|Basic(PandasVisualization)|[Python_Basic(PandasVisualization)_0712.ipynb](./docs/10.Python_Basic(PandasVisualization)_0712.ipynb)|판다스 시각화 기초 학습|Matplotlib, Seaborn|
+|10|Basic(PandasVisualization)|[Python_Basic(PandasVisualization)_0712.ipynb](./docs/10_Python_Basic(PandasVisualization)_0712.ipynb)|판다스 시각화 기초 학습|Matplotlib, Seaborn|
 |11|Basic(||||
 
 ### 2) Pracice
