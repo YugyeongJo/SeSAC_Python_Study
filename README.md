@@ -18,6 +18,13 @@
 |02|Basic(Operator)|[Python_Basic(Operator)_0702.ipynb](./docs/02_Python_Basic(Operator)_0702.ipynb)|파이썬 연산자 기초 학습||
 |03|Basic(Control_Statement)|[Python_Basic(Control_Statement)_0702.ipynb](./docs/03_Python_Basic(Control_Statement)_0702.ipynb)|파이썬 제어문 기초 학습||
 |04|Basic(Function)|[Python_Basic(Function)_0703-0705.ipynb](./docs/04_Python_Basic(Function)_0703_0705.ipynb)|파이썬 함수 기초 학습||
+|05|Basic(Datatype_List)|[Python_Basic(Datatype_List)_0708_0709.ipynb](./docs/05_Python_Basic(Datatype_List)_0708_0709.ipynb)|파이썬 자료형 기초 학습||
+|06|Basic(||||
+|07|Basic(||||
+|08|Basic(ClassObjectInstance)|[Python_Basic(ClassObjectInstance)_0710.ipynb](./docs/08_Python_Basic(ClassObjectInstance)_0710.ipynb)|파이썬 클래스 객체 인스턴스 기초 학습||
+|09|Basic(Pandas)|[Python_Basic(Pandas)_0710_0711.ipynb](./docs/09_Python_Basic(Pandas)_0710_0711.ipynb)|판다스 기초 학습||
+|10|Basic(PandasVisualization)||||
+|11|Basic(||||
 
 ### 2) Pracice
 
