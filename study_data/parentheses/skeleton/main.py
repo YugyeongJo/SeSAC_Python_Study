@@ -30,15 +30,16 @@ def find_matching_pair(text, idx):
         find_matching_pair(')', 0)
         >> NotClosedParenthesesException 
     """
-    # 예외 상황 1
-    if not all(c in '()' for c in text):
-        raise InvalidTokenException("The input contains invalid character.")
-    # 예외 상황 2
+    # 예외 상황 1 : 입력한 idx가 out of range일 경우
     if idx < 0 or idx >= len(text):
         raise ValueError("idx is larger or equal to len(text) or is smaller than 0.")
     
     num = 0
     for i, x in enumerate(text[idx:], start=idx):
+        # 예외 상황 2 : ()가 아닐 경우
+        if not all(c in '()' for c in text):
+            raise InvalidTokenException("The input contains invalid character.")
+    
         if x == tokens[0]:
             num += 1
         elif x == tokens[1]:
@@ -76,6 +77,7 @@ def parse_empty_string():
 
 
 # 기본 값
+# offset = 전체 문자열의 인덱스번호와 맞춰주려고 
 def default_node_information(text, offset):
     res = {}
     
@@ -106,29 +108,40 @@ def update_rule1_data(text, res):
     
     
     return res 
+
 # 기본 값 + rule1 mid
 def update_rule1_mid(text, res):
     assert determine_if_rule1(text)
     
     matching_pair_idx = find_matching_pair(text, 0)
     
-    res['mid'] = parse_parentheses_with_offset(text[1:matching_pair_idx], 1)
+    res['mid'] = parse_parentheses_with_offset(text[1:matching_pair_idx], offset=1)
     
     return res 
 
 
 # 기본 값 + rule2
-def update_rule2_data(text, res):
+def update_rule2_data(text, res):  
     assert determine_if_rule2(text)
     
+    res['rule'] = 2
+    
     return res 
+
 # 기본 값 + rule2 nodes
 def update_rule2_nodes(text, res):
     assert determine_if_rule2(text)
-
+    
+    result = []
+    idx = 0
+    while idx < len(text)-1:
+        jdx = find_matching_pair(text, idx)
+        result.append((text[idx:jdx+1], idx))
+        idx = jdx + 1
+    
+    res['nodes'] = [parse_parentheses_with_offset(text, idx) for text, idx in result]
+    
     return res 
-
-
 
 
 # explain
