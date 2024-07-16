@@ -139,6 +139,11 @@ def update_rule2_nodes(text, res):
         result.append((text[idx:jdx+1], idx))
         idx = jdx + 1
     
+    # res_nodes = []
+    # for t, i in result:
+    #     res_nodes.append(parse_parentheses_with_offset(t, i))
+    # res['nodes'] = res_nodes
+    
     res['nodes'] = [parse_parentheses_with_offset(text, idx) for text, idx in result]
     
     return res 
