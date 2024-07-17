@@ -1,6 +1,6 @@
 game_status = {'x_positions' : [], 'o_positions' : []} 
 
-def empty_board(width_count = 3, length_count = 3):
+def empty_board(width_count = 3, length_count = 3, x_size = 3):
     """Create an empty board. 
 
     The board is made of horizontal lines, made with - and vertical lines, made with |. 
@@ -13,14 +13,14 @@ def empty_board(width_count = 3, length_count = 3):
     for l in range(length_count):
         width_board = ''
         for i in range(width_count):
-            width_board += ' ' + width*10
+            width_board += ' ' + width*x_size*2
         width_board = width_board+'\n'
         board += width_board
 
         length_board = ''
         for j in range(length_count):
             for k in range(width_count+1):
-                length_board += length + ' '*10
+                length_board += length + ' '*x_size*2
             length_board = length_board + '\n'
         board += length_board
     board += width_board
@@ -61,8 +61,10 @@ def play(game_status, x_or_o, coordinate):
         
     if x_or_o == 'X':
         game_status['x_positions'].append(coordinate)
-    else: 
+    elif x_or_o == 'O': 
         game_status['o_positions'].append(coordinate) 
+    else:
+        raise ValueError(f'x_or_o shoul be one of X or O; got {x_or_o}')
 
 def check_winlose(game_status):
     """Check the game status; game status should be one of 'X wins', 'O wins', 'tie', 'not decided'. 
@@ -90,7 +92,7 @@ def check_winlose(game_status):
     else:
         return 'Not decided'
 
-def display(game_status):
+def display(game_status, x_size= 3, y_size= 3, x_cell_size= 5, y_cell_size= 3):
     """Display the current snapshot of the board. 
 
     'Snapshot' should contain following components. 
@@ -122,6 +124,24 @@ def display(game_status):
      ---------- ---------- ----------
 
     """
+    hline = (' ' + '-' * x_cell_size) * x_size
+    
+    for y in range(y_size):
+        print(hline)
+        for z in range(y_cell_size):
+            for x in range(x_size):
+                if z == 1:
+                    if (x, y) in game_status['x_positions']:
+                        print('|' + ' ' * (x_cell_size//2) + 'X' + ' ' * (x_cell_size//2), end = '')
+                    elif (x, y) in game_status['o_positions']:
+                        print('|' + ' ' * (x_cell_size//2) + 'O' + ' ' * (x_cell_size//2), end = '')
+                    else: 
+                        print('|' + ' ' * x_cell_size, end = '')
+                else:
+                    print('|' + ' ' * x_cell_size, end = '')
+            print('|')
+    print(hline)
+
     pass 
 
 if __name__ == '__main__':
@@ -135,3 +155,4 @@ if __name__ == '__main__':
     print(check_winlose(game_status))
     print(play(game_status, 'X', (0, 0)))
     print(check_winlose(game_status))
+    display(game_status)

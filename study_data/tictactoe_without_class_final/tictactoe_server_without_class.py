@@ -1,10 +1,12 @@
 from tictactoe_without_class import check_winlose, play, display 
+from player import random_player, smart_player
+
 
 def play_game(x_player, o_player):
     game_status = {'x_positions' : [], 'o_positions' : []} 
     x_or_o = 'X'
     
-    while check_winlose(game_status) == 'not decided':
+    while check_winlose(game_status) == 'Not decided':
         print('==============')
         x_positions = game_status['x_positions']
         o_positions = game_status['o_positions']
@@ -24,4 +26,4 @@ def play_game(x_player, o_player):
     return game_status 
 
 if __name__ == '__main__':
-    play_game(random_player, random_player)
+    play_game(smart_player, random_player)
