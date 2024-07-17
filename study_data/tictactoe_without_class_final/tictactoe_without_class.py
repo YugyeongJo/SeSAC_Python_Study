@@ -62,9 +62,7 @@ def play(game_status, x_or_o, coordinate):
     if x_or_o == 'X':
         game_status['x_positions'].append(coordinate)
     else: 
-        game_status['o_positions'].append(coordinate)
-    pass 
-    return game_status
+        game_status['o_positions'].append(coordinate) 
 
 def check_winlose(game_status):
     """Check the game status; game status should be one of 'X wins', 'O wins', 'tie', 'not decided'. 
@@ -87,11 +85,10 @@ def check_winlose(game_status):
             return print('X wins')
         elif win[0] in game_status['o_positions'] and win[1] in game_status['o_positions'] and win[2] in game_status['o_positions']:
             return print('O wins')
-        elif len(game_status['x_positions']) + len(game_status['o_positions'])== 9:
-            return 'tie'
-        else:
-            return 'not decided'
-    pass 
+    if len(game_status['x_positions']) + len(game_status['o_positions']) == 9:
+        return 'Tie'
+    else:
+        return 'Not decided'
 
 def display(game_status):
     """Display the current snapshot of the board. 
