@@ -33,7 +33,7 @@ if __name__ == '__main__':
     from time import time 
 
     begin = time()
-    print(smart_finder(updown_game_medium))
+    print(smart_finder(updown_game_hard))
     end = time()
 
     print(end - begin)

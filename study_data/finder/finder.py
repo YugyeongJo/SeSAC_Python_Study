@@ -81,7 +81,7 @@ def smart_finder(f, min_input = 0.0, max_input = 100.0):
             max_input = guess - 1 # max_input 중앙값 이전으로 조정
         elif res == None:
             min_input += 1
-            max_input -= 2
+            # max_input -= 2
         else:
             print("Invalid response from function")
 
