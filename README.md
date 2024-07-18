@@ -19,7 +19,7 @@
 |03|Basic(Control_Statement)|[Python_Basic(Control_Statement)_0702](./Python_Basic/03_Python_Basic(Control_Statement)_0702.ipynb)|파이썬 제어문 기초 학습||
 |04|Basic(Function)|[Python_Basic(Function)_0703-0705](./Python_Basic/04_Python_Basic(Function)_0703_0705.ipynb)|파이썬 함수 기초 학습||
 |05|Basic(Datatype_List)|[Python_Basic(Datatype_List)_0708_0709](./Python_Basic/05_Python_Basic(Datatype_List)_0708_0709.ipynb)|파이썬 자료형 기초 학습||
-|06|Basic(Datatype_List2)|[Python_Basic(Datatype_List2)_0708-0709](./Python_Basic/06_Python_Basic(Datatype_List2)_0708_0709.ipynb|파이썬 자료형 기초 학습||
+|06|Basic(Datatype_List2)|[Python_Basic(Datatype_List2)_0708-0709](./Python_Basic/06_Python_Basic(Datatype_List2)_0708_0709.ipynb)|파이썬 자료형 기초 학습||
 |07|Basic(Regex)|[Python_Basic(Regex)_0710](./Python_Basic/07.Python_Basic(Regex)_0710.ipynb)|파이썬 정규표현식 학습||
 |08|Basic(ClassObjectInstance)|[Python_Basic(ClassObjectInstance)_0710](./Python_Basic/08_Python_Basic(ClassObjectInstance)_0710.ipynb)|파이썬 클래스/객체/인스턴스 기초 학습||
 |09|Basic(Pandas)|[Python_Basic(Pandas)_0710_0711](./Python_Basic/09_Python_Basic(Pandas)_0710_0711.ipynb)|판다스 기초 학습|Pandas|
