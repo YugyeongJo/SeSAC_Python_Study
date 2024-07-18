@@ -41,6 +41,7 @@
 |01|parentheses|[parentheses](./Python_Advanced/docs/parentheses)|올바른 괄호 찾기 예제 실습||
 |02|tictactoe without class final|[tictactoe without class final](./Python_Advanced/docs/tictactoe_without_class_final)|tictactoe 게임 구현 실습||
 |03|finder|[finder](./Python_Advanced/docs/finder)|최적의 숫자 찾기(updown game, animation) 실습||
+|04|simple python|[simple python](./Python_Advanced/docs/simple_python)|string text 입력하여 코드 실행시키기 실습||
 
 ### 2) study_data
 
