@@ -42,15 +42,44 @@ SeSAC_Python_Study/
     ├── 
     ├── 
     ├── practice/
-    │      └── parentheses/
-    │      └── finder/
-    │      └── tictactoe_without_class_final/
-    │      └── simple_python/
-    │      └──     
+    │      ├── parentheses/
+    │      │        ├── skeleton/
+    │      │        │       ├── __init__.py
+    │      │        │       ├── exceptions.py
+    │      │        │       ├── main.py
+    │      │        │       └── util.py
+    │      │        ├── solution/
+    │      │        │       ├── __init__.py
+    │      │        │       ├── exceptions.py
+    │      │        │       ├── main.py
+    │      │        │       └── util.py
+    │      │        ├── testcases/
+    │      │        ├── test_result.txt/
+    │      │        └── test.py
+    │      ├── finder/
+    │      │        ├── animation.py
+    │      │        ├── experiment.py
+    │      │        ├── finder.py
+    │      │        ├── forces.py
+    │      │        ├── get_angle.py
+    │      │        ├── particlebox.py
+    │      │        ├── particles.py
+    │      │        ├── test.py
+    │      │        ├── updown_game.py
+    │      │        └── util.py
+    │      ├── tictactoe_without_class_final/
+    │      │        ├── player.py
+    │      │        ├── tictactoe_server_without_class.py
+    │      │        └── tictactoe_without_class.py
+    │      ├── simple_python/
+    │      │        └── simple_python.py
+    │      ├── tictactoe/    
+    │      │        └── tictactoe_server.py
+    │      │        └── tictactoe.py
     │      └──
     └── data_file/    
-            └── parentheses.zip
-            └── finder.zip
+            ├── parentheses.zip
+            ├── finder.zip
             └── tictactoe_without_class_final.zip
 ```
 
