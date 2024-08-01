@@ -148,7 +148,7 @@ SeSAC_Python_Study/
 |03|finder|[finder](./Python_Advanced/practice/finder)|최적의 숫자 찾기(updown game, animation) 실습||
 |04|simple python|[simple python](./Python_Advanced/practice/simple_python)|string text 입력하여 코드 실행시키기 실습||
 |05|tictactoe|[tictactoe](./Python_Advanced/practice/tictactoe)|python class 활용 예제 실습||
-|06|stock_simulation|[stock_simulation](./Python_Advanced/practice/stock_simulation)|주식||
+|06|stock_simulation|[stock_simulation](./Python_Advanced/practice/stock_simulation)|주식 흐름에 따른 전략 생성 및 포트폴리오 제작||
 </details>
 
 ### 3) study_data
