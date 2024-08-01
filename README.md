@@ -38,7 +38,7 @@
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
-|01|class.py|[class](./Python_Advanced/docs/class_study.py)|python class 학습||
+|01|class.py|[class](./Python_Advanced/docs/class.py)|python class 학습||
 
 ### 2) practice
 
