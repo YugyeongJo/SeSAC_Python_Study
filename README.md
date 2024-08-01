@@ -123,3 +123,6 @@ SeSAC_Python_Study/
 |02|tictactoe without class final|[tictactoe without class final](./Python_Advanced/data_file/tictactoe_without_class_final.zip)|tictactoe without class final 실습자료 zip 파일||
 |03|finder|[finder](./Python_Advanced/data_file/finder.zip)|finder 실습자료 zip 파일||
 </details>
+
+## 📝참고자료
+
