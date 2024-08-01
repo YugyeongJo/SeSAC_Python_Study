@@ -1,11 +1,58 @@
 # 📚 SeSAC_Python_Study
 
+## 📖 소개
+
+SeSAC_Python_Study 레포지토리는 Python 언어를 학습한 내용을 담고 있습니다.  
+Python의 기초 구문과 심화 실습(알고리즘 등)을 다룹니다.
+
 ## 🛠️ Tech Stack
 
 |<center>Colab</center>|<center>VScode</center>|<center>Python</center>|
 |--|--|--|
 |<p align="center"><img alt="Google Colab" src="icons\Google_Colaboratory_SVG_Logo.svg" width="85"></p>|<p align="center"><img alt="vscode" src="./icons/VSCode-Light.svg" width="48"></p>|<p align="center"><img alt="html" src="./icons/Python-Dark.svg" width="48"></p>| 
 |<img src="https://img.shields.io/badge/google colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white">|<img src="https://img.shields.io/badge/visual studio code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">|<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">|
+
+## 📂 Directory Structure
+
+```plaintext
+SeSAC_Python_Study/
+├── README.md 
+├── icons/
+│   └── Python-Dark.svg
+│   └── VSCode-Light.svg
+│   └── Google_Colaboratory_SVG_Logo.svg
+├── Python_Basic/
+│   ├── 00_Python_Introduction_0701.ipynb
+│   ├── 01_Python_Basic(Variable)_0701.ipynb
+│   ├── 02_Python_Basic(Operator)_0702.ipynb
+│   ├── 03_Python_Basic(Control_Statement)_0702.ipynb
+│   ├── 04_Python_Basic(Function)_0703_0705.ipynb
+│   ├── 05_Python_Basic(Datatype_List)_0708_0709.ipynb
+│   ├── 06_Python_Basic(Datatype_List2)_0708_0709.ipynb
+│   ├── 
+│   ├── 08_Python_Basic(ClassObjectInstance)_0710.ipynb
+│   ├── 09_Python_Basic(Pandas)_0710_0711.ipynb
+│   ├── 10_Python_Basic(PandasVisualization)_0712.ipynb
+│   └── practice/
+│          └──numeral_system.py
+└── Python_Advanced/
+    ├── class.py
+    ├── 
+    ├── 
+    ├── 
+    ├── 
+    ├── practice/
+    │      └── parentheses/
+    │      └── finder/
+    │      └── tictactoe_without_class_final/
+    │      └── simple_python/
+    │      └──     
+    │      └──
+    └── data_file/    
+            └── parentheses.zip
+            └── finder.zip
+            └── tictactoe_without_class_final.zip
+```
 
 ## 💻 Python Basic File
 
@@ -34,11 +81,11 @@
 
 ## 💻 Python Advanced
 
-### 1) docs
+### 1) Advanced
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
-|01|class.py|[class](./Python_Advanced/docs/class.py)|python class 학습||
+|01|class.py|[class](./Python_Advanced/class.py)|python class 학습||
 
 ### 2) practice
 
