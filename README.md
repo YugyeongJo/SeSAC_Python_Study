@@ -58,6 +58,9 @@ SeSAC_Python_Study/
 
 ### 1) BASIC
 
+<details open>
+<summary>BASIC</summary>
+
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
 |00|Intrduction|[Python_Introduction_0701](./Python_Basic/00_Python_Introduction_0701.ipynb)|Markdown 학습<br>파일 생성방법 학습<br>파이썬오류 학습 ||
@@ -72,22 +75,34 @@ SeSAC_Python_Study/
 |09|Basic(Pandas)|[Python_Basic(Pandas)_0710_0711](./Python_Basic/09_Python_Basic(Pandas)_0710_0711.ipynb)|판다스 기초 학습|Pandas|
 |10|Basic(PandasVisualization)|[Python_Basic(PandasVisualization)_0712](./Python_Basic/10_Python_Basic(PandasVisualization)_0712.ipynb)|판다스 시각화 기초 학습|Matplotlib, Seaborn|
 |11|Basic(||||
+</details>
 
 ### 2) Pracice
+
+<details open>
+<summary>Pracice</summary>
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
 |01|Python|[numeral_system](./docs/practice/numeral_system.py)|진법 변환 계산기 함수 예제 실습||
+</details>
 
 ## 💻 Python Advanced
 
 ### 1) Advanced
 
+<details open>
+<summary>Advanced</summary>
+
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
 |01|class.py|[class](./Python_Advanced/class.py)|python class 학습||
+</details>
 
 ### 2) practice
+
+<details open>
+<summary>practice</summary>
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
@@ -95,11 +110,16 @@ SeSAC_Python_Study/
 |02|tictactoe without class final|[tictactoe without class final](./Python_Advanced/practice/tictactoe_without_class_final)|tictactoe 게임 구현 실습||
 |03|finder|[finder](./Python_Advanced/practice/finder)|최적의 숫자 찾기(updown game, animation) 실습||
 |04|simple python|[simple python](./Python_Advanced/practice/simple_python)|string text 입력하여 코드 실행시키기 실습||
+</details>
 
 ### 3) study_data
+
+<details open>
+<summary>study_data</summary>
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
 |01|parentheses|[parentheses 실습자료](./Python_Advanced/data_file/tictactoe_without_class_final.zip)|parentheses 실습자료 zip 파일||
 |02|tictactoe without class final|[tictactoe without class final](./Python_Advanced/data_file/tictactoe_without_class_final.zip)|tictactoe without class final 실습자료 zip 파일||
 |03|finder|[finder](./Python_Advanced/data_file/finder.zip)|finder 실습자료 zip 파일||
+</details>
