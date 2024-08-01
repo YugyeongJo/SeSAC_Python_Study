@@ -74,9 +74,18 @@ SeSAC_Python_Study/
     │      ├── simple_python/
     │      │        └── simple_python.py
     │      ├── tictactoe/    
-    │      │        └── tictactoe_server.py
+    │      │        ├── tictactoe_server.py
     │      │        └── tictactoe.py
-    │      └──
+    │      ├── stock_simulation/    
+    │      │        ├── stock_history/
+    │      │        ├── stock_simulation/
+    │      │        ├── investor1.png
+    │      │        ├── stock_simulation.py
+    │      │        └── util.py
+    │      ├── /    
+    │      │        ├── 
+    │      │        └── 
+    │      └── 
     └── data_file/    
             ├── parentheses.zip
             ├── finder.zip
@@ -140,6 +149,7 @@ SeSAC_Python_Study/
 |03|finder|[finder](./Python_Advanced/practice/finder)|최적의 숫자 찾기(updown game, animation) 실습||
 |04|simple python|[simple python](./Python_Advanced/practice/simple_python)|string text 입력하여 코드 실행시키기 실습||
 |05|tictactoe|[tictactoe](./Python_Advanced/practice/tictactoe)|python class 활용 예제 실습||
+|06|stock_simulation|[stock_simulation](./Python_Advanced/practice/stock_simulation)|주식||
 </details>
 
 ### 3) study_data
@@ -152,6 +162,7 @@ SeSAC_Python_Study/
 |01|parentheses|[parentheses 실습자료](./Python_Advanced/data_file/tictactoe_without_class_final.zip)|parentheses 실습자료 zip 파일||
 |02|tictactoe without class final|[tictactoe without class final](./Python_Advanced/data_file/tictactoe_without_class_final.zip)|tictactoe without class final 실습자료 zip 파일||
 |03|finder|[finder](./Python_Advanced/data_file/finder.zip)|finder 실습자료 zip 파일||
+|04|stock_simulation|[stock_simulation](./Python_Advanced/data_file/stock_simulation.zip)|stock_simulation 실습자료 zip 파일||
 </details>
 
 ## 📝참고자료
