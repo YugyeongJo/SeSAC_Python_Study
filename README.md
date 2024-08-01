@@ -78,8 +78,7 @@ SeSAC_Python_Study/
     │      │        └── tictactoe.py
     │      ├── stock_simulation/    
     │      │        ├── stock_history/
-    │      │        ├── stock_simulation/
-    │      │        ├── investor1.png
+    │      │        ├── yugyeongjo.png
     │      │        ├── stock_simulation.py
     │      │        └── util.py
     │      ├── /    

@@ -1,6 +1,7 @@
 from util import company_lists, plot_line_graph
 from random import random
 import os 
+from collections import defaultdict
 
 class Stock:
     HISTORY_DIR = 'stock_history'
@@ -8,7 +9,7 @@ class Stock:
         self.name = name 
         self.initial_price = 10000
         self.price_history = [10000]
-        self.momentum = 0
+        self.momentum = -0.1
         self.momentum_upper_bound = max(abs(random()-0.5), 0.5)
         self.momentum_lower_bound = -max(abs(random()-0.5), 0.5)
         self.price = self.initial_price
@@ -18,7 +19,7 @@ class Stock:
     
     def step(self, market):
         if random() < 0.05:
-            self.price = self.price * 1.10
+            self.price = self.price * 1.0
         elif random() > 0.95:
             self.price = self.price * 0.80
         else:
@@ -35,7 +36,7 @@ class Stock:
         if not os.path.exists(Stock.HISTORY_DIR):
             os.makedirs(Stock.HISTORY_DIR)
         
-        plot_line_graph(self.price_history, save_to = f'stock_history/{self.name}.png', title = f'Price graph of {self.name}', x_label = 'time', y_label = '{self.name} price')
+        plot_line_graph(self.price_history, save_to = f'stock_history/{self.name}.png', title = f'Price graph of {self.name}', x_label = 'time', y_label = f'{self.name} price')
          
 
 class StockMarket:
@@ -48,12 +49,12 @@ class StockMarket:
             stock.step(self)
 
 class Investor:
-    def __init__(self, name = 'investor1', initial_asset = 10000000, strategy = lambda investor, market:None):
+    def __init__(self, name = 'yugyeongjo', initial_asset = 10000000, strategy = lambda investor, market:None):
         self.name = name 
         self.asset = initial_asset
         self.cash = initial_asset 
         self.asset_history = [initial_asset]
-        self.portfolio = {}
+        self.portfolio = defaultdict(float)
         self.strategy = strategy
 
     def buy(self, stock, amount):
@@ -73,16 +74,16 @@ class Investor:
     def buy_or_sell(self, market):
         self.strategy(self, market)
         stock_asset = 0
-        for stock, amount in self.portfolio:
+        for stock, amount in self.portfolio.items():
             stock_asset += stock.price * amount
         self.asset = stock_asset + self.cash 
         self.asset_history.append(self.asset)
 
     def plot_history(self):
-        plot_line_graph(self.asset_history, save_to = f'{self.name}.png', title = f'Asset History of {self.name}', x_label = 'time', y_label = '{self.name} Asset')
+        plot_line_graph(self.asset_history, save_to = f'{self.name}.png', title = f'Asset History of {self.name}', x_label = 'time', y_label = f'{self.name} Asset')
 
 def simulate(strategy = lambda investor, market:None, n_steps = 100, n_company = 10):
-    investor = Investor()
+    investor = Investor(strategy = strategy)
     stocks = []
     
     company_list = []
@@ -109,7 +110,37 @@ def simulate(strategy = lambda investor, market:None, n_steps = 100, n_company =
     for stock in stocks:
         stock.plot_history()
     investor.plot_history()
+    
+# 이동 평균 차이 전략
+def my_strategy(investor, market):
+    for stock in market.listed_stocks:
+        short_window = 5
+        long_window = 20
+        
+        if len(stock.price_history) < long_window:
+            continue
+        
+        short_ma = moving_average(stock.price_history, short_window)
+        long_ma = moving_average(stock.price_history, long_window)
+        
+        # 이동 평균 차이를 계산하여 비례하게 매수 또는 매도 양을 결정
+        ma_diff = short_ma - long_ma
+        
+        if ma_diff > 0:
+            amount = int(ma_diff / stock.price * 100)
+            if amount > 0:
+                investor.buy(stock, amount)
+        elif ma_diff < 0:
+            amount = int(ma_diff / stock.price * 100)
+            if amount > 0:
+                investor.sell(stock, amount) 
+                
+# 이동 평균 구하는 함수
+def moving_average(prices, window):
+    if len(prices) < window:
+        return sum(prices) / len(prices)
+    return sum(prices[-window:]) / window
 
 if __name__ == '__main__':
-    simulate()
+    simulate(strategy = my_strategy)
     
