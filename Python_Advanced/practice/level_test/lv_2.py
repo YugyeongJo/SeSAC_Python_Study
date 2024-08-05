@@ -98,11 +98,22 @@ def pyramid3(n):
 # write your code here 
 def pyramid4(n):
     empty = ' '
+    lst_basic = [1]
     
     for i in range(n): 
-        empty_line = empty*(n-(i+1))
+        line = [empty for _ in range(n-(i+1))] + lst_basic
+        if len(lst_basic) >= 2:
+            for j in range(n-1):
+                
+            
+        else: 
+            lst_basic.append(empty)
+            lst_basic.append(1)
         
     pass
+
+n = int(input())
+pyramid4(n)
 
 # --------------------------------------------
 # 5) 다음 패턴을 찍는 함수 sierpinski_triangle을 짜 보세요. 
@@ -160,7 +171,7 @@ for j in range(1, n):
             line = ((4*j)*empty) + (star + empty) * (i+1)
         else: 
             line = ((4*j)*empty) + empty*(4-(i+1)) + star + empty*((2*i)-1) + star
-        print(line)
+        # print(line)
 
 # --------------------------------------------
 # 2. 여러 리스트 관련 함수들 구현해보기 
@@ -205,14 +216,17 @@ def accumulate(lst, function = lambda x, y: x+y):
 # --------------------------------------------
 
 # write your code here 
-lst = [1,2,3,4,5]
-n = 2
-
 def batched(lst, n):
-    for i in range(n):
-        lst[i:i+n]
-    
+    result = []
+    for i in range(0, len(lst), n):
+        answer = tuple(lst[i:i+n])
+        result.append(answer)
+    print(result)
     pass
+
+# lst = [1,2,3,4,5]
+# n = 2
+# batched(lst, n)
 
 # --------------------------------------------
 # 3) product(args)
@@ -225,19 +239,38 @@ def batched(lst, n):
 # --------------------------------------------
 
 # write your code here 
-args = [[1,2,3], [4,5,6,7], [8, 9, 10]]
-count = len(args)
-
-result = [0 for i in range(count)]
-
-for i in range():
+# result = [0 for i in range(count)]
+# num = 0
+# while num == count:
     
-print(result)
-def product(args):
+#     for i in range(len(args[num])):
+#         for j in range(len(args[]))
         
-    pass
+#     num += 1
+    
+def flatten(a, b):
+    if isinstance(a, tuple) and isinstance(b, tuple):
+        return a + b
+    elif isinstance(a, tuple) and not isinstance(b, tuple):
+        return a + (b,)
+    elif not isinstance(a, tuple) and isinstance(b, tuple):
+        return (a,) + b
+    elif not isinstance(a, tuple) and not isinstance(b, tuple):
+        return (a, b)
+    
+def product(args):
+    result = []
+    if len(args) == 2:
+        for i in range(len(args[0])):
+            for j in range(len(args[1])):
+                answer = flatten(args[0][i], args[1][j])
+                result.append(answer)
+        return result
+    else :
+        return product([args[0], product(args[1:])])
 
-
+# args = [[1,2], [3,4], [5,6]]
+# print(product(args))
 
 # --------------------------------------------
 # 4) permutations(lst, r) 
