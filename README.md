@@ -81,6 +81,10 @@ SeSAC_Python_Study/
     │      │        ├── yugyeongjo.png
     │      │        ├── stock_simulation.py
     │      │        └── util.py
+    │      ├── level_test/    
+    │      │        ├── lv_0.py
+    │      │        ├── lv_1.py
+    │      │        └── lv_2.py
     │      ├── /    
     │      │        ├── 
     │      │        └── 
