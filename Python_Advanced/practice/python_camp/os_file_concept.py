@@ -9,7 +9,24 @@ import pickle
 # 3) os.getcwd / os.changedir 해보기 
 # --------------------------------------------
 
+print(os.getcwd())
 
+for elem in os.listdir():
+    if os.path.isdir(elem):
+        print(f'<DIR>\t\t{elem}')
+    elif '.' in elem:
+        extension = elem.split('.')[-1]
+        print(f'{extension} file\t\t{elem}')
+        
+def create_dir(directory_name):
+    if not os.path.exists(directory_name):
+        print(f'{directory_name} does not exists;')
+        os.makedir(directory_name)
+        
+    else:
+        print(f'{directory_name} does exists;')
+        
+create_dir('hellow world')
 
 # --------------------------------------------
 # 2. file 기초 예제 
@@ -18,9 +35,26 @@ import pickle
 # 2) 파일 읽기, 써보기 
 # --------------------------------------------
 
+f = open('example.txt', 'w+', encoding='utf-8')
+
+for i in range(100):
+    print(i, file = f)
+    # f.write(str(i) + '\n')
+    # print(1, file = f) 
+    
+f.close()
+
 # --------------------------------------------
 # 3. pickle 기초 예제 
 # 
 # 1) pickle.load() 해보기 
 # 2) pickle.dump() 해보기 
 # --------------------------------------------
+
+d = {}
+
+pickle.dump(d, open('empty_dict.pickle', 'wb+'))
+
+e = pickle.load(open('empty_dict.pickle', 'rb'))
+
+print(e)

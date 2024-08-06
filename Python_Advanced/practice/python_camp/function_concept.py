@@ -9,17 +9,21 @@
 def pi():
     """원주율을 소숫점 두 자리까지 반환하는 함수
     """
-    pass 
+    return round(3.141592653589793, 2)
 
 def left_append(lst, elem):
     """lst의 왼쪽에 elem을 넣고, lst를 반환하는 함수 
     """
-    pass 
+    lst.insert(0, elem)
+    return lst 
 
 def left_extend(lst, *elem):
     """lst의 왼쪽에 정해지지 않은 갯수의 elem을 넣고 lst를 반환하는 함수 
     """
-    pass 
+    for x in elem:
+        lst.insert(0, x)
+        
+    return lst
 
 # --------------------------------------------
 # 2. 함수의 call stack 알아보기 
@@ -33,6 +37,8 @@ def a():
 def b():
     return a()
 
+# >>> b, a, pi
+
 # --------------------------------------------
 # 2) 아래 함수 c()를 실행할 때, 실행된 함수의 순서와 각 함수의 input은? 
 # --------------------------------------------
@@ -44,3 +50,4 @@ def c(lst):
 
 c(list(range(10)))
 
+# >>> c(lst(rage(10))), list(range(10)), range(10), print(lst[0]), c(lst[1:]), print(lst[1:][0]) ...
