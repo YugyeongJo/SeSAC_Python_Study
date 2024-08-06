@@ -85,6 +85,14 @@ SeSAC_Python_Study/
     │      │        ├── lv_0.py
     │      │        ├── lv_1.py
     │      │        └── lv_2.py
+    │      ├── python_camp/    
+    │      │        ├── function_concept.py
+    │      │        ├── function_practice.py
+    │      │        ├── os_file_concept.py
+    │      │        └── os_file_practice.py
+    │      ├── /    
+    │      │        ├── 
+    │      │        └── 
     │      ├── /    
     │      │        ├── 
     │      │        └── 
@@ -92,7 +100,10 @@ SeSAC_Python_Study/
     └── data_file/    
             ├── parentheses.zip
             ├── finder.zip
-            └── tictactoe_without_class_final.zip
+            ├── tictactoe_without_class_final.zip
+            ├── stock_simulation.zip
+            ├── level_test.zip
+            └── python_camp.zip
 ```
 
 ## 💻 Python Basic File
@@ -153,6 +164,9 @@ SeSAC_Python_Study/
 |04|simple python|[simple python](./Python_Advanced/practice/simple_python)|string text 입력하여 코드 실행시키기 실습||
 |05|tictactoe|[tictactoe](./Python_Advanced/practice/tictactoe)|python class 활용 예제 실습||
 |06|stock_simulation|[stock_simulation](./Python_Advanced/practice/stock_simulation)|주식 흐름에 따른 전략 생성 및 포트폴리오 제작||
+|07|level_test|[level_test](./Python_Advanced/practice/level_test)|python level test용 실습||
+|08|python_camp|[python_camp](./Python_Advanced/practice/python_camp)|||
+||||||
 </details>
 
 ### 3) study_data
@@ -166,6 +180,10 @@ SeSAC_Python_Study/
 |02|tictactoe without class final|[tictactoe without class final](./Python_Advanced/data_file/tictactoe_without_class_final.zip)|tictactoe without class final 실습자료 zip 파일||
 |03|finder|[finder](./Python_Advanced/data_file/finder.zip)|finder 실습자료 zip 파일||
 |04|stock_simulation|[stock_simulation](./Python_Advanced/data_file/stock_simulation.zip)|stock_simulation 실습자료 zip 파일||
+|05|level_test|[level_test](./Python_Advanced/data_file/level_test.zip)|level_test 실습자료 zip 파일||
+|06|python_camp|[python_camp](./Python_Advanced/data_file/python_camp.zip)|python_camp 실습자료 zip 파일||
+||||||
+||||||
 </details>
 
 ## 📝참고자료

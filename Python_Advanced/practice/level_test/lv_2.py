@@ -95,25 +95,105 @@ def pyramid3(n):
 #   1 4 6 4 1 
 # --------------------------------------------
 
-# write your code here 
-def pyramid4(n):
-    empty = ' '
-    lst_basic = [1]
+# 참고
+# line1 = [1]
+# line2 = [1, 1]
+# line3 = [line2[0]
+#          , line2[0]+line2[1]
+#          , line2[1]]
+# line4 = [line3[0]
+#          , line3[0]+line3[1]
+#          , line3[1], line3[2]
+#          , line3[2]] 
+# line5 = [line4[0]
+#          , line4[0]+line4[1]
+#          , line4[1], line4[2]
+#          , line4[2], line4[3]
+#          , line4[3]] 
+# line_n = [line_n_1[0]
+#           , line_n_1[0] + line_n_1[1]
+#           , line_n_1[1] + line_n_1[2]
+#           , line_n_1[2] + line_n_1[3]
+#           , ...
+#           , line_n_1[n-3] + line_n_1[n-2]
+#           , line_n_1[n-2]]
+
+# line_n = []
+
+# for i in range(n-2):
+#     line_n.append(line_n_1[i] + line_n_1[i+1])
     
-    for i in range(n): 
-        line = [empty for _ in range(n-(i+1))] + lst_basic
-        if len(lst_basic) >= 2:
-            for j in range(n-1):
+def pascal(n):
+    def generate_next_line(last_line):
+        n = len(last_line) + 1
+        
+        next_line = [last_line[0]]
+
+        for i in range(n-2):
+            next_line.append(last_line[i] + last_line[i+1])
+
+        next_line.append(last_line[n-2])
+
+        return next_line
+    
+    lines = [[1], [1,1]]
+    
+    while len(lines) != n:
+        lines.append(generate_next_line(lines[-1]))
+
+    space = ' '
+
+    def fill(number, digits, fill_with = '0'):
+        number_digit = get_digit(number)
+        return (digits - number_digit) * fill_with + str(number)
+
+    def get_digit(number):
+        # int(log_10(n))
+        # 123 
+        digit = 1
+        
+        while True:
+            if number < 10:
+                break 
+            else:
+                digit += 1 
+                number = number // 10 
+        
+        return digit 
+
+    max_number = max(lines[-1])
+    max_digit = get_digit(max_number)
+
+    space = ' ' * max_digit
+
+    for idx, line in enumerate(lines):
+        print((n-1-idx)*space + space.join([\
+            fill(e, max_digit, ' ') for e in line]))
+    
+    return lines 
+
+for line in pascal(12):
+    print(line)
+    
+# write your code here 
+# def pyramid4(n):
+#     empty = ' '
+#     lst_basic = [1]
+    
+#     for i in range(n): 
+#         line = [empty for _ in range(n-(i+1))] + lst_basic
+#         if len(lst_basic) >= 2:
+#             for j in range(n-1):
                 
             
-        else: 
-            lst_basic.append(empty)
-            lst_basic.append(1)
+#         else: 
+#             lst_basic.append(empty)
+#             lst_basic.append(1)
         
-    pass
+#     pass
 
-n = int(input())
-pyramid4(n)
+# n = int(input())
+# pyramid4(n)
 
 # --------------------------------------------
 # 5) 다음 패턴을 찍는 함수 sierpinski_triangle을 짜 보세요. 
@@ -154,24 +234,65 @@ pyramid4(n)
 # --------------------------------------------
 
 # write your code here 
-def sierpinski_triangle(n):
-    
-    
-    pass
 
-star = '*'
-empty = ' '
-n = 3
+# 기본 삼각형 print 함수
+def triangle():
+    lines = [\
+        '   *    ', 
+        '  * *   ', 
+        ' *   *  ', 
+        '* * * * ', 
+        ]
+    return lines
 
-for j in range(1, n):
-    for i in range(4):
-        if i == 0:
-            line = ((4*j)*empty) + empty*(4-(i+1)) + star
-        elif i == 3:
-            line = ((4*j)*empty) + (star + empty) * (i+1)
-        else: 
-            line = ((4*j)*empty) + empty*(4-(i+1)) + star + empty*((2*i)-1) + star
-        # print(line)
+# 
+def lstsum(l, r):
+    assert len(l) == len(r)
+    
+    return [(a+b) for a, b in zip(l, r)]
+
+# # 참고
+# def big_triangle():
+#     res = []
+#     res += [' '*4 + line + ' '*4 for line in triangle()]
+#     res += lstsum(triangle(), triangle())
+#     return res
+# def big_big_triangle():
+#     res = []
+#     res += [' '*8 + line for line in big_triangle()]
+#     res += lstsum(big_triangle(), big_triangle())
+#     return res
+
+def sierpinski_triangle_list(n):
+    if n == 1:
+        return triangle()
+    else: 
+        res = [' '*2**n + line + ' '*2**n for line in sierpinski_triangle_list(n-1)]
+        res += lstsum(sierpinski_triangle_list(n-1), sierpinski_triangle_list(n-1))
+        return res
+    
+def sierpinski_triagle(n):
+    return '\n'.join(sierpinski_triangle_list(n))
+
+# print(sierpinski_triagle(1))
+# print(sierpinski_triagle(2))
+# print(sierpinski_triagle(3))
+# print(sierpinski_triagle(4))
+
+# My Code
+# star = '*'
+# empty = ' '
+# n = 3
+
+# for j in range(1, n):
+#     for i in range(4):
+#         if i == 0:
+#             line = ((4*j)*empty) + empty*(4-(i+1)) + star
+#         elif i == 3:
+#             line = ((4*j)*empty) + (star + empty) * (i+1)
+#         else: 
+#             line = ((4*j)*empty) + empty*(4-(i+1)) + star + empty*((2*i)-1) + star
+#         # print(line)
 
 # --------------------------------------------
 # 2. 여러 리스트 관련 함수들 구현해보기 

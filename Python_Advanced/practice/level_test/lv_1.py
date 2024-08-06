@@ -128,4 +128,24 @@ a = 'absdf123SAFDSDF'
 
 # write your code here 
 
+star = '*'
+space = ' '
 
+# top = [\
+#     star + space*n + star + space*n + star, 
+#     space + star + space*(n-1) + star + space*(n-1) + star + space, 
+#     space*2 + star + space(n-2) + star + space*(n-2) + star + space*2,
+#     ...
+#     space*n + star + space*0 + star + space*0 + star + space*n, ]
+
+n = 6
+top = []
+for i in range(n+1):
+    top.append(space*i + star + space*(n-i) + star + space*(n-i) + star + space*i)
+mid = [space*(n+1) + star + space*(n+1), ]
+bottom = []
+
+for e in top:
+    bottom = [e] + bottom
+
+print('\n'.join(top + mid + bottom))
