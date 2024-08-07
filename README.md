@@ -167,7 +167,7 @@ SeSAC_Python_Study/
 |05|tictactoe|[tictactoe](./Python_Advanced/practice/tictactoe)|python class 활용 예제 실습||
 |06|stock_simulation|[stock_simulation](./Python_Advanced/practice/stock_simulation)|주식 흐름에 따른 전략 생성 및 포트폴리오 제작||
 |07|level_test|[level_test](./Python_Advanced/practice/level_test)|python level test용 실습||
-|08|python_camp|[python_camp](./Python_Advanced/practice/python_camp)|||
+|08|python_camp|[python_camp](./Python_Advanced/practice/python_camp)|sort 함수 구현 실습 및 os 모듈 활용 실습||
 ||||||
 </details>
 
