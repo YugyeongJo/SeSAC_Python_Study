@@ -152,6 +152,11 @@ def cmp(x, y):
     elif len(x) < len(y): return y 
     else: return 'equal'
 
+def my_cmp(x, y):
+    if len(x) < len(y): return x 
+    elif len(x) > len(y): return y 
+    else: return 'equal'
+
 def find_insert_index(lst, x, upper_to_lower, cmp, tie_breaker):
     for i in range(len(lst)):
         if cmp(x, lst[i]) == 'equal':
@@ -177,7 +182,7 @@ def sort5(lst, upper_to_lower = True, cmp = lambda x, y: x if x > y else y, tie_
     return lst_sort
      
 # lst = [(1, 2), (3, 4, 5), (3, 6), ]
-# print(sort5(lst, True, cmp = cmp, tie_breaker = lambda x, y: x if sum(x) > sum(y) else y))
+# print(sort5(lst, True, cmp = my_cmp, tie_breaker = lambda x, y: x if sum(x) > sum(y) else y))
 # print(sort5(lst, False, cmp = cmp, tie_breaker = lambda x, y: x if sum(x) > sum(y) else y))
 
 # --------------------------------------------
@@ -214,18 +219,125 @@ import pickle
 
 def create_dir(directory_name):
     if not os.path.exists(directory_name):
-        os.makedir(directory_name)
+        os.makedirs(directory_name)
     else:
         print(f'{directory_name} does exists')
 
-directory_name = 'pickle_cache'
-create_dir(f'C:\\develops\\SeSAC_Python_Study\\Python_Advanced\\practice\\python_camp\\{directory_name}')
+# directory_name = 'pickle_cache'
+# create_dir(f'C:\\develops\\SeSAC_Python_Study\\Python_Advanced\\practice\\python_camp\\{directory_name}')
         
+def function():
+    from time import sleep 
+    sleep(1)
+    return str(1) 
+
 def cache_to_txt(function):
     
-    pass 
+    directory_name = 'pickle_cache'
+    create_dir(directory_name)
+    
+    file_path = f'{directory_name}/result.txt'
+    
+    if not os.path.exists(file_path):
+        res = function()
+        f = open(file_path, 'w+', encoding='utf-8')
+        f.write(res)
+        f.close()
+        return res
+    else:
+        f = open(file_path, 'r', encoding='utf-8')
+        res = f.read() 
+        f.close()
+        return res
 
+# cache_to_txt(function)
+
+# def function():
+#     from time import sleep 
+#     sleep(1)
+#     return str(1)
+
+# def create_dir(directory_name):
+#     if not os.path.exists(directory_name):
+#         os.makedirs(directory_name)
+#     else:
+#         print(f'{directory_name} does exists')
+#     return 
+        
+# def cache_to_pickle(function):
+    
+#     directory_name = 'pickle_cache'
+#     create_dir(directory_name)
+    
+    
+#     def my_function(x):
+#         return x
+    
+#     file_path = f'{directory_name}/{x}result.pickle'
+    
+#     if not os.path.exists(file_path):
+#         res = function()
+#         pickle.dump(res, open('result.pickle', 'wb+'))
+#         return res
+#     else:
+#         f = pickle.load(open('result.pickle', 'rb'))
+#         print(f)
+#         return res
+
+# def double(x):
+#     return 2*x 
+
+# print(cache_to_pickle(function)(1))
+
+# stdout
+# >> 2
+# file ouput
+# pickle_cache/1.pickle             # in case of (2)
+# pickle_cache/double/1.pickle      # in case of (3)
+
+# def f(g):
+#     def h(x):
+#         return g(x) + x
+#     return h
+
+# f(double)(3)
+
+def function():
+    from time import sleep 
+    sleep(1)
+    return str(1)
+
+def create_dir(directory_name):
+    if not os.path.exists(directory_name):
+        os.makedirs(directory_name)
+    else:
+        print(f'{directory_name} does exists')
+    return 
+        
 def cache_to_pickle(function):
-    pass 
+    
+    directory_name = 'pickle_cache'
+    create_dir(directory_name)
+    
+    def my_function(x):
+    
+        file_path = f'{directory_name}/{x}result.pickle'
+        
+        if not os.path.exists(file_path):
+            res = my_function
+            pickle.dump(res, open('result.pickle', 'wb+'))
+            return res
+        else:
+            f = pickle.load(open('result.pickle', 'rb'))
+            print(f)
+            return res
+        
+    return my_function
+        
+def double(x):
+    return 2*x 
+
+print(cache_to_pickle(double)(1))
+
 
 

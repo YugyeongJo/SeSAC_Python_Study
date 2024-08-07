@@ -21,7 +21,7 @@ for elem in os.listdir():
 def create_dir(directory_name):
     if not os.path.exists(directory_name):
         print(f'{directory_name} does not exists;')
-        os.makedir(directory_name)
+        os.makedirs(directory_name)
         
     else:
         print(f'{directory_name} does exists;')
