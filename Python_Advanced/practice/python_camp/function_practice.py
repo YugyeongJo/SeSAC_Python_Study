@@ -65,7 +65,39 @@ def sort1(lst):
     
     return lst_sort 
 
-# print(sort1([5, 3, 8, 6, 7, 2]))
+# =================================== #
+# 강사님 code
+def sort1_min(lst):
+    res = []
+    lst_copy = [e for e in lst]
+    n = len(lst)
+    
+    while len(res) < n:
+        m = my_min(lst_copy, lambda x, y: x if x > y else y)
+        res.append(m)
+        lst_copy.remove(m)      
+            
+    return res
+
+def get_insert_idx(res, elem):
+    idx = 0
+    
+    for i, e in enumerate(res):
+        if elem < e:
+            return i
+        
+    return len(res)
+
+def sort1_insert(lst):
+    res = []
+    
+    for idx, elem in enumerate(lst):
+        new_idx = get_insert_idx(res, elem)
+        res.insert(new_idx, elem)
+        
+    return res
+
+# print(sort1_min([5, 3, 8, 6, 7, 2]))
 # #####################################
 
 def find_insert_index(lst, x, upper_to_lower):
@@ -87,9 +119,51 @@ def sort2(lst, upper_to_lower = True):
     
     return lst_sort 
 
+
 # lst = [5, 3, 8, 6, 7, 2]
 # print(sort2(lst, upper_to_lower=True)) 
 # print(sort2(lst, upper_to_lower=False))
+
+# =================================== #
+# 강사님 code
+
+def sort2_min(lst, upper_to_lower=True):
+    res = []
+    
+    lst_copy = [e for e in lst]
+    n = len(lst)
+    
+    while len(res) < n:
+        m = my_min(lst_copy, lambda x, y: x if x > y else y)
+        if not upper_to_lower:
+            res.append(m)
+        else:
+            res = [m] + res
+        lst_copy.remove(m)
+        
+    return res
+
+def get_insert_idx(res, elem, upper_to_lower = False):
+    
+    for i, e in enumerate(res):
+        if not upper_to_lower:
+            if elem < e:
+                return i
+        else:
+            if elem > e:
+                return i
+        
+    return len(res)
+
+def sort2_insert(lst, upper_to_lower=True):
+    res = []
+    
+    for idx, elem in enumerate(lst):
+        new_idx = get_insert_idx(res, elem, upper_to_lower = upper_to_lower)
+        res.insert(new_idx, elem)
+    
+    return res    
+
 # #####################################
 
 def find_insert_index(lst, x, upper_to_lower, cmp):
@@ -114,6 +188,47 @@ def sort3(lst, upper_to_lower = True, cmp = lambda x, y: x if x > y else y):
 # lst = [5, 3, 8, 2, 7, 2]
 # print(sort3(lst, True, cmp = lambda x, y: x if x % 3 > y % 3 else y))
 # print(sort3(lst, False))
+
+# =================================== #
+# 강사님 code
+
+def sort3_min(lst, upper_to_lower=True, cmp = lambda x, y: x):
+    res = []
+    
+    lst_copy = [e for e in lst]
+    n = len(lst)
+    
+    while len(res) < n:
+        m = my_min(lst_copy, cmp)
+        if not upper_to_lower:
+            res.append(m)
+        else:
+            res = [m] + res
+        lst_copy.remove(m)
+        
+    return res 
+
+def get_insert_idx(res, elem, upper_to_lower = True, cmp = lambda x, y: x if x > y else y):
+    
+    for i, e in enumerate(res):
+        if not upper_to_lower:
+            if e == cmp(elem, e):
+                return i
+        else:
+            if e == cmp(elem, e):
+                return i
+        
+    return len(res)
+
+def sort3_insert(lst, upper_to_lower=True, cmp = lambda x, y: x if x > y else y):
+    res = []
+    
+    for idx, elem in enumerate(lst):
+        new_idx = get_insert_idx(res, elem, upper_to_lower = upper_to_lower, cmp=cmp)
+        res.insert(new_idx, elem)
+    
+    return res    
+
 # #####################################
 
 def cmp(x, y):
@@ -185,6 +300,74 @@ def sort5(lst, upper_to_lower = True, cmp = lambda x, y: x if x > y else y, tie_
 # print(sort5(lst, True, cmp = my_cmp, tie_breaker = lambda x, y: x if sum(x) > sum(y) else y))
 # print(sort5(lst, False, cmp = cmp, tie_breaker = lambda x, y: x if sum(x) > sum(y) else y))
 
+# =================================== #
+# 강사님 code
+
+def my_min(lst, cmp = lambda x, y: x, tie_breaker = lambda x, y : x):
+    
+    if not lst:
+        return None
+    
+    min_element = lst[0]
+    
+    for x in lst[1:]:
+        case = cmp(x, min_element)
+        if case == min_element:
+            min_element = x
+        elif case == x:
+            pass
+        else:
+            tie_case = tie_breaker(x, min_element)
+            if tie_case == min_element:
+                min_element = x
+        
+    return min_element
+
+def sort5_min(lst, upper_to_lower = True, cmp=lambda x, y: x, tie_breaker = lambda x, y: random.choice([x, y])):
+    res = []
+    lst_copy = [e for e in lst]
+    n = len(lst)
+    
+    while len(res) < n:
+        m = my_min(lst_copy, cmp = cmp, tie_breaker = tie_breaker)
+        if not upper_to_lower:
+            res.append(m)
+        else:
+            res = [m] + res
+        lst_copy.remove(m)
+    
+    return res
+
+def my_compare(x, y):
+    if x[0] > y[0]: return x
+    elif y[0] > x[0]: return y
+    else: return "equal"
+    
+def get_insert_idx(res, elem, upper_to_lower = True, cmp = lambda x, y: x if x > y else y, tie_breaker = lambda x, y: random.choice([x,y])):
+    
+    for i, e in enumerate(res):
+        case = cmp(elem, e)
+        if not upper_to_lower:
+            if e == cmp(elem, e):
+                return i
+            elif case != elem:
+                tie_breaker()
+        else:
+            if e == cmp(elem, e):
+                return i
+        
+    return len(res)
+
+def sort5_insert(lst, upper_to_lower=True, cmp = lambda x, y: x if x > y else y, tie_breaker = lambda x, y: random.choice([x,y])):
+    res = []
+    
+    for idx, elem in enumerate(lst):
+        new_idx = get_insert_idx(res, elem, upper_to_lower = upper_to_lower, cmp=cmp, tie_breaker = tie_breaker)
+        res.insert(new_idx, elem)
+    
+    return res      
+
+# ####################################### #
 # --------------------------------------------
 # os_file_concept.py 해보고 올 것 
 # --------------------------------------------

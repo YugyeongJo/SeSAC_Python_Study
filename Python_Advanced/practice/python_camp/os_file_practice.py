@@ -33,8 +33,6 @@ def list_extension_files(root, file):
 def copy_directory(src, dest):
     """os 디렉토리 복사하는 함수
     """
-    
-    
 
 print_directory_tree('./')
 # list_extension_files('./', 'png')
