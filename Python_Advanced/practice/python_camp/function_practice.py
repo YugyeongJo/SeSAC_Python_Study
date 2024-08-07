@@ -252,60 +252,16 @@ def cache_to_txt(function):
 
 # cache_to_txt(function)
 
-# def function():
-#     from time import sleep 
-#     sleep(1)
-#     return str(1)
+def double(x):
+    print(f"double이 {x}으로 실행되었습니다.")
+    return 2*x 
 
-# def create_dir(directory_name):
-#     if not os.path.exists(directory_name):
-#         os.makedirs(directory_name)
-#     else:
-#         print(f'{directory_name} does exists')
-#     return 
-        
-# def cache_to_pickle(function):
-    
-#     directory_name = 'pickle_cache'
-#     create_dir(directory_name)
-    
-    
-#     def my_function(x):
-#         return x
-    
-#     file_path = f'{directory_name}/{x}result.pickle'
-    
-#     if not os.path.exists(file_path):
-#         res = function()
-#         pickle.dump(res, open('result.pickle', 'wb+'))
-#         return res
-#     else:
-#         f = pickle.load(open('result.pickle', 'rb'))
-#         print(f)
-#         return res
-
-# def double(x):
-#     return 2*x 
-
-# print(cache_to_pickle(function)(1))
-
-# stdout
-# >> 2
-# file ouput
-# pickle_cache/1.pickle             # in case of (2)
-# pickle_cache/double/1.pickle      # in case of (3)
-
-# def f(g):
-#     def h(x):
-#         return g(x) + x
-#     return h
-
-# f(double)(3)
-
-def function():
-    from time import sleep 
-    sleep(1)
-    return str(1)
+def triple(args):
+    print(f"args = {args}")
+    for x in args:
+        a = 3*x
+        print(x)
+    return a
 
 def create_dir(directory_name):
     if not os.path.exists(directory_name):
@@ -319,25 +275,32 @@ def cache_to_pickle(function):
     directory_name = 'pickle_cache'
     create_dir(directory_name)
     
-    def my_function(x):
-    
-        file_path = f'{directory_name}/{x}result.pickle'
+    def my_function(*args, **kargs):
+        
+        file_path = f'{directory_name}/{args}result.pickle'
         
         if not os.path.exists(file_path):
-            res = my_function
-            pickle.dump(res, open('result.pickle', 'wb+'))
+            res = function(args)
+            pickle.dump(res, open(file_path, 'wb+'))
             return res
         else:
-            f = pickle.load(open('result.pickle', 'rb'))
-            print(f)
+            res = pickle.load(open(file_path, 'rb'))
             return res
         
     return my_function
         
-def double(x):
-    return 2*x 
+# print(cache_to_pickle(triple)(1,2,3,4,5,6,10))
 
-print(cache_to_pickle(double)(1))
+# stdout
+# >> 2
+# file ouput
+# pickle_cache/1.pickle             # in case of (2)
+# pickle_cache/double/1.pickle      # in case of (3)
 
+# def f(g):
+#     def h(x):
+#         return g(x) + x
+#     return h
 
+# f(double)(3)
 
