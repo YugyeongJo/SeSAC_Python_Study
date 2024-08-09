@@ -90,9 +90,10 @@ SeSAC_Python_Study/
     │      │        ├── function_practice.py
     │      │        ├── os_file_concept.py
     │      │        └── os_file_practice.py
-    │      ├── /    
-    │      │        ├── 
-    │      │        └── 
+    │      ├── mydate/    
+    │      │        ├── mydate.py
+    │      │        ├── mydate_modify.py
+    │      │        └── example.py
     │      ├── /    
     │      │        ├── 
     │      │        └── 

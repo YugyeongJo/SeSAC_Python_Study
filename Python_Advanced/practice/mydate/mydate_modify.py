@@ -91,7 +91,6 @@ class MyDate:
             , self.sec - other.sec
         ]
         
-        nonzero_flag = False
         res = []
         flag = False 
         for e in r[::-1]:
@@ -177,6 +176,7 @@ if __name__ == '__main__':
     # assert d1 + d3 == MyDate(2022, 4, 2, 14, 30)
     
     d4 = MyDate(2022, 1, 1)
+    MyDate.__init__(d4, 2022, 1, 1)
     d5 = MyDate(day = 2)
 
     # print(d4 + d5)
