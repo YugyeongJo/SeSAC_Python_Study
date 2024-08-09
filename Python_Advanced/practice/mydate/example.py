@@ -52,8 +52,13 @@ def lst_add(l, r, table = {0:lambda lst:12,
             cur_max = table[idx-1](res)
             print(res)
 
-    return res 
+    return res
     
 if __name__ == '__main__':
-    print(lst_sub([2023, 2, 14], [2022, 12, 15]))
-    print(lst_add([2023, 1, 31], [0, 0, 31]))
+    print(lst_sub([2023, 1, 14], [2022, 12, 15]))
+    print(lst_add([2023, 1, 1], [0, 0, 31]))
+    res = [2023, 1, -30] [2023, 0, 31-30]
+    res = [2023, 1, -30] [2023, 0, 31-30] [2023, 0, 1]
+    
+    
+    

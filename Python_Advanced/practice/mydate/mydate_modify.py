@@ -1,11 +1,4 @@
-class MyDate:
-
-    # Date 요소
-    MONTH = [x for x in range(1, 13)]
-    HOUR = [x for x in range(24)]
-    MINUTE = [x for x in range(60)]
-    SECOND = [x for x in range(60)]
-    
+class MyDate: 
     @staticmethod
     def day_check(year, month):
         if month == 2:
@@ -16,7 +9,14 @@ class MyDate:
         elif month in [4, 6, 9, 11]:
             return 30
         else:
-            return 31
+            return 31 
+        
+    # Date 요소
+    MONTH = [x for x in range(1, 13)]
+    HOUR = [x for x in range(24)]
+    MINUTE = [x for x in range(60)]
+    SECOND = [x for x in range(60)]
+    table = {0:lambda lst:12, 1:lambda lst: MyDate.day_check(lst[0], lst[1]), 2:lambda lst: 24, 3:lambda lst: 60, 4:lambda lst: 60}
     
     def __init__(self, year = 0, month = 0, day = 0, hour = 0, minute = 0, sec = 0):
         
@@ -45,6 +45,8 @@ class MyDate:
         self.hour = hour
         self.minute = minute
         self.sec = sec
+        
+        self.args = (year, month, day, hour, minute, sec)
         
     def __add__(self, other):
         
@@ -80,16 +82,57 @@ class MyDate:
         return MyDate(new_year, new_month, new_day, new_hour, new_minute, new_second)
 
     def __sub__(self, other):
+        r = [
+            self.year - other.year
+            , self.month - other.month
+            , self.day - other.day
+            , self.hour - other.hour
+            , self.minute - other.minute
+            , self.sec - other.sec
+        ]
         
-        # if self.year > other.year:
+        nonzero_flag = False
+        res = []
+        flag = False 
+        for e in r[::-1]:
             
-        # new_second = 
-        # new_minute = 
-        # new_hour = 
-        # new_day = 
-        # new_month = 
-        # new_year = 
-        pass 
+            if e != 0:
+                res.append(e)
+                flag = True 
+            
+            elif flag:
+                res.append(e)
+        res = res[::-1]
+            
+        # 작은거에서 큰거 빼면 에러
+        cmp = [a-b for a, b in zip(self.args, other.args)]
+        for idx, e in enumerate(cmp):
+            if e > 0:
+                break
+            
+            if idx == 0 or idx > 2:
+                if e < 0:
+                    raise ValueError("Unable to execute")
+            else: 
+                if e <= 0:
+                    raise ValueError("Unable to execute")
+            
+        for idx, elem in enumerate(res[1::-1]):
+            idx = len(res)-idx-1
+            cur_max = MyDate.table[idx-1](res)
+            print('before', idx, cur_max, res)
+            if idx == 0 or idx > 2:
+                while res[idx] < 0:
+                    res[idx] = cur_max+res[idx]
+                    res[idx-1] -= 1
+                    cur_max = MyDate.table[idx-1](res)
+            else:
+                while res[idx] <= 0:
+                    res[idx] = cur_max+res[idx]
+                    res[idx-1] -= 1
+                    cur_max = MyDate.table[idx-1](res)
+            print('after', idx, cur_max, res)
+        return MyDate(*res)   
 
     def __eq__(self, other):
         return (self.year == other.year \
@@ -101,36 +144,47 @@ class MyDate:
 
     # d1 < d2 less than
     def __lt__(self, other):
-        pass 
+        for a, b in zip(self.args, other.args):
+            if a < b:
+                return True 
+            elif a > b:
+                return False 
+                
+        return False 
     
     # less equl
     def __le__(self, other):
-        pass 
+        return self < other or self == other 
     
+    # greater than
     def __gt__(self, other):
-        pass 
+        return not self < other and not self == other 
 
+    # greater equl
     def __ge__(self, other):
-        pass 
+        return self > other or self == other 
 
     def __str__(self):
         return f'{self.year}/{self.month}/{self.day} {self.hour}:{self.minute}:{self.sec}'
 
 if __name__ == '__main__':
     # d0 = MyDate()
-    d1 = MyDate(2022, 4, 1, 14, 30)
+    # d1 = MyDate(2022, 4, 1, 14, 30)
     # d2 = MyDate(2024, 8, 100, 23, 10) # should raise an error 
     # d3 = MyDate(2024, 2, 30)
 
-    d3 = MyDate(day = 1)
+    # d3 = MyDate(day = 1)
     # assert d1 + d3 == MyDate(2022, 4, 2, 14, 30)
     
-    # d4 = MyDate(2022, 1, 31)
-    # d5 = MyDate(day = 100)
+    d4 = MyDate(2022, 1, 1)
+    d5 = MyDate(day = 2)
 
     # print(d4 + d5)
     # assert d4 + d5 == MyDate(2022, 4, 1)
 
-    # assert d1 - d3 == MyDate(2022, 3, 31, 14, 30) 
+    # print(d1 - d3)
+    print(d4 - d5)
+    assert d4 - d5 == MyDate(2021, 12, 30) 
+    [2022, 1, -1]
 
     # assert d1 < d2 
