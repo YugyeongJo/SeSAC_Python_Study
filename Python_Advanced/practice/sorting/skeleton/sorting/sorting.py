@@ -18,13 +18,13 @@ def sort3_insert(lst, cmp = lambda x, y: x if x > y else y):
     
     return res 
 
-def merge_sort_divide(lst):
+def merge_sort_divide(lst, cmp = lambda x, y: x if x > y else y):
     # 나누기
     if len(lst) >= 2:
         mid = len(lst)//2
         
-        left = merge_sort(lst[:mid])
-        right = merge_sort(lst[mid:])
+        left = merge_sort(lst[:mid], cmp)
+        right = merge_sort(lst[mid:], cmp)
     
         return merge_sort(left, right)
     else: 

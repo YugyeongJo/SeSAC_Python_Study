@@ -169,14 +169,16 @@ SeSAC_Python_Study/
 |06|stock_simulation|[stock_simulation](./Python_Advanced/practice/stock_simulation)|주식 흐름에 따른 전략 생성 및 포트폴리오 제작||
 |07|level_test|[level_test](./Python_Advanced/practice/level_test)|python level test용 실습||
 |08|python_camp|[python_camp](./Python_Advanced/practice/python_camp)|sort 함수 구현 실습 및 os 모듈 활용 실습||
-||||||
-||||||
+|09|mydate|[mydate](./Python_Advanced/practice/mydate)|날짜 간격 구하는 함수 구현 실습||
+|10|game|[game](./Python_Advanced/practice/game)|게임 구현 실습||
+|11|sorting|[sorting](./Python_Advanced/practice/sorting)|정렬 알고리즘 학습 및 실습||
+|12|||||
 </details>
 
-### 3) study_data
+### 3) data_file
 
 <details open>
-<summary>study_data</summary>
+<summary>data_file</summary>
 
 |번호|구분|파일|설명|비고|
 |--|--|--|--|--|
@@ -186,6 +188,9 @@ SeSAC_Python_Study/
 |04|stock_simulation|[stock_simulation](./Python_Advanced/data_file/stock_simulation.zip)|stock_simulation 실습자료 zip 파일||
 |05|level_test|[level_test](./Python_Advanced/data_file/level_test.zip)|level_test 실습자료 zip 파일||
 |06|python_camp|[python_camp](./Python_Advanced/data_file/python_camp.zip)|python_camp 실습자료 zip 파일||
+|07|sorting|[sorting](./Python_Advanced/data_file/sorting.zip)|sorting 실습자료 zip 파일||
+||||||
+||||||
 ||||||
 ||||||
 </details>
