@@ -94,6 +94,18 @@ SeSAC_Python_Study/
     │      │        ├── mydate.py
     │      │        ├── mydate_modify.py
     │      │        └── example.py
+    │      ├── game/    
+    │      │        ├── game.py
+    │      │        └── util.py
+    │      ├── sorting/    
+    │      │        ├── skeleton
+    │      │        │       └── sorting/
+    │      │        │              ├── measure_performance.py
+    │      │        │              └── sorting.py
+    │      │        └── solution
+    │      │                └── sorting/
+    │      │                       ├── measure_performance.py
+    │      │                       └── sorting.py
     │      ├── /    
     │      │        ├── 
     │      │        └── 
