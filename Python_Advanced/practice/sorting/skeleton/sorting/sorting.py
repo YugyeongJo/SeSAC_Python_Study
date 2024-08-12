@@ -8,7 +8,6 @@ def get_insert_idx(res, elem,
     
     return len(res)
 
-
 def sort3_insert(lst, cmp = lambda x, y: x if x > y else y):
     res = []
 
@@ -55,7 +54,23 @@ def merge_sort(left, right, cmp = lambda x, y: x if x > y else y):
     return res
 
 def quick_sort(lst, cmp = lambda x, y: x if x > y else y):
-    return lst 
+    left, center, right = [], [], []
+    pivot = lst[-1]
+    
+    if len(lst) >= 2:
+        for i in lst:
+            if cmp(lst[i], pivot) == pivot:
+                left.append(lst[i])
+            elif cmp(lst[i], pivot) == lst[i]:
+                right.append(lst[i])
+            else:
+                center.append(lst[i])
+    else:
+        return lst
+            
+    return quick_sort(left) + center + quick_sort(right)
 
 def tim_sort(lst, cmp = lambda x, y: x if x > y else y):
+    
+    
     return lst 

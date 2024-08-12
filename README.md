@@ -97,7 +97,15 @@ SeSAC_Python_Study/
     │      ├── /    
     │      │        ├── 
     │      │        └── 
-    │      └── 
+    │      ├── /    
+    │      │        ├── 
+    │      │        └── 
+    │      ├── /    
+    │      │        ├── 
+    │      │        └── 
+    │      ├── /    
+    │      │        ├── 
+    │      │        └── 
     └── data_file/    
             ├── parentheses.zip
             ├── finder.zip
