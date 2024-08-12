@@ -17,7 +17,7 @@ def sort3_insert(lst, cmp = lambda x, y: x if x > y else y):
     
     return res 
 
-def merge_sort_divide(lst, cmp = lambda x, y: x if x > y else y):
+def merge_sort(lst, cmp = lambda x, y: x if x > y else y):
     # 나누기
     if len(lst) >= 2:
         mid = len(lst)//2
@@ -25,11 +25,11 @@ def merge_sort_divide(lst, cmp = lambda x, y: x if x > y else y):
         left = merge_sort(lst[:mid], cmp)
         right = merge_sort(lst[mid:], cmp)
     
-        return merge_sort(left, right)
+        return merge(left, right, cmp)
     else: 
         return lst
     
-def merge_sort(left, right, cmp = lambda x, y: x if x > y else y):
+def merge(left, right, cmp = lambda x, y: x if x > y else y):
     # 합치기
     i = j = 0
     res = []
@@ -55,13 +55,20 @@ def merge_sort(left, right, cmp = lambda x, y: x if x > y else y):
 
 def quick_sort(lst, cmp = lambda x, y: x if x > y else y):
     left, center, right = [], [], []
+    if lst == []:
+        return lst
+    
     pivot = lst[-1]
     
     if len(lst) >= 2:
-        for i in lst:
-            if cmp(lst[i], pivot) == pivot:
+        for i in range(len(lst)):
+            # if cmp(lst[i], pivot) == pivot:
+            #     left.append(lst[i])
+            # elif cmp(lst[i], pivot) == lst[i]:
+            #     right.append(lst[i])
+            if lst[i] > pivot:
                 left.append(lst[i])
-            elif cmp(lst[i], pivot) == lst[i]:
+            elif lst[i] < pivot:
                 right.append(lst[i])
             else:
                 center.append(lst[i])
@@ -71,6 +78,12 @@ def quick_sort(lst, cmp = lambda x, y: x if x > y else y):
     return quick_sort(left) + center + quick_sort(right)
 
 def tim_sort(lst, cmp = lambda x, y: x if x > y else y):
-    
-    
-    return lst 
+    # 나누기
+    if len(lst) <= 4:
+        return sort3_insert(lst)
+    else: 
+        mid = len(lst)//2
+        
+        left = tim_sort(lst[:mid], cmp)
+        right = tim_sort(lst[mid:], cmp)
+        return merge(left, right, cmp)
