@@ -102,10 +102,13 @@ SeSAC_Python_Study/
     │      │        │       └── sorting/
     │      │        │              ├── measure_performance.py
     │      │        │              └── sorting.py
-    │      │        └── solution
-    │      │                └── sorting/
-    │      │                       ├── measure_performance.py
-    │      │                       └── sorting.py
+    │      │        ├── solution
+    │      │        │       └── sorting/
+    │      │        │              ├── measure_performance.py
+    │      │        │              └── sorting.py
+    │      │        └── experiment result/   
+    │      │                       ├── merge_sort.png
+    │      │                       └── quick_sort.png
     │      ├── /    
     │      │        ├── 
     │      │        └── 
