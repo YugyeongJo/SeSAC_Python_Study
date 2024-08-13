@@ -111,9 +111,15 @@ SeSAC_Python_Study/
     │      │                       ├── quick_sort.png
     │      │                       ├── sorted.png
     │      │                       └── tim_sort.png   
-    │      ├── /    
-    │      │        ├── 
-    │      │        └── 
+    │      ├── algorithm-in-python-master/    
+    │      │        ├── skeleton
+    │      │        │       ├── ADT/
+    │      │        │       ├── data_structure/
+    │      │        │       └── bank_simulation.py
+    │      │        ├── solution
+    │      │        │       ├── ADT/
+    │      │        │       └── data_structure/
+    │      │        └── /   
     │      ├── /    
     │      │        ├── 
     │      │        └── 
@@ -197,7 +203,9 @@ SeSAC_Python_Study/
 |09|mydate|[mydate](./Python_Advanced/practice/mydate)|날짜 간격 구하는 함수 구현 실습||
 |10|game|[game](./Python_Advanced/practice/game)|게임 구현 실습||
 |11|sorting|[sorting](./Python_Advanced/practice/sorting)|정렬 알고리즘 학습 및 실습||
-|12|||||
+|12|ADT(Queue, Stack)|[ADT(Queue, Stack)](./Python_Advanced/practice/algorithm-in-python-master)|ADT 큐, 스택 자료구조 학습 및 실습||
+|13|||||
+|14|||||
 </details>
 
 ### 3) data_file
@@ -214,7 +222,7 @@ SeSAC_Python_Study/
 |05|level_test|[level_test](./Python_Advanced/data_file/level_test.zip)|level_test 실습자료 zip 파일||
 |06|python_camp|[python_camp](./Python_Advanced/data_file/python_camp.zip)|python_camp 실습자료 zip 파일||
 |07|sorting|[sorting](./Python_Advanced/data_file/sorting.zip)|sorting 실습자료 zip 파일||
-||||||
+|08|ADT|[algorithm-in-python-master](./Python_Advanced/data_file/algorithm-in-python-master.zip)|ADT 실습자료 zip 파일||
 ||||||
 ||||||
 ||||||
