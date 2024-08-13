@@ -1,6 +1,7 @@
 import sys 
-sys.path.append('../data_structure')
-
+sys.path.append('./skeleton/data_structure')
+# sys.path.append('../data_structure')
+# 
 try:
     from linked_list import LinkedList, LinkedNode, DoublyLinkedNode, DoublyLinkedList
 except ModuleNotFoundError:
@@ -15,12 +16,15 @@ class Queue:
             self.list = list(elements)
         elif self.backend == LinkedList:
             self.linked_list = LinkedList(list(elements))
+            # import code 
+            # code.interact(local = locals())
 
     def elements(self):
         if self.backend == list:
             return self.list 
         elif self.backend == LinkedList:
-            return self.linked_list.to_list()
+            # return self.linked_list.to_list()
+            return list(self.linked_list)
 
     def enqueue(self, elem):
         if self.backend == list:

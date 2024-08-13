@@ -22,11 +22,9 @@ class LinkedList:
             for idx, element in enumerate(elements):
                 if not isinstance(element, LinkedNode):
                     elements[idx] = LinkedNode(idx, element)
-            for idx, element in enumerate(elements):
-                if idx+1 > idx:
-                    element.next = None
-                else:
-                    element.next = elements[idx+1]
+            for idx, element in enumerate(elements[:-1]):
+                element.next = elements[idx+1]
+            elements[-1].next = None
                 
             self.head = elements[0] 
             self.tail = elements[1:]
@@ -34,17 +32,34 @@ class LinkedList:
             self.size = len(elements)
             
     def to_list(self):
+        # cur = self.head 
+        # res = []
+        
+        # while cur is not None:
+        #     res.append(cur.datum)
+        #     cur = cur.next 
+
+        # return res 
         return [x for x in self]
+        # return list(self)
+        # return [x for x in LinkedList.__iter__(self)]
+        # 
         
     def __iter__(self):
-        yield None 
+        cur = self.head 
+        
+        while cur is not None:
+            yield cur.datum 
+            cur = cur.next 
 
     def __str__(self):
         res = ''
-
-        return res 
+        current = self.head
+        while current:
+            res += str(self.datum) + ' -> '
+            current = current.next
+        return res .rstrip(' -> ')
         
-
 class DoublyLinkedNode(Node):
     def __init__(self, node_id, datum, prev = None, next = None):
         self.node_id = node_id 
