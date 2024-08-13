@@ -109,7 +109,8 @@ SeSAC_Python_Study/
     │      │        └── experiment result/   
     │      │                       ├── merge_sort.png
     │      │                       ├── quick_sort.png
-    │      │                       └── experience
+    │      │                       ├── sorted.png
+    │      │                       └── tim_sort.png   
     │      ├── /    
     │      │        ├── 
     │      │        └── 
