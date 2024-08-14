@@ -8,9 +8,13 @@ class LinkedNode:
         self.node_id = node_id 
         self.datum = datum
         self.next = next 
+        
+    def __str__(self):
+        return str(self.datum)
 
 class LinkedList:
-    def __init__(self, elements):
+    def __init__(self, elements = None):            
+        # len(elements) == 0
         if elements == []:
             self.head = None 
             self.tail = None 
@@ -18,18 +22,20 @@ class LinkedList:
             self.size = 0
             
         else:
-        
+            size = 0
             for idx, element in enumerate(elements):
                 if not isinstance(element, LinkedNode):
                     elements[idx] = LinkedNode(idx, element)
+                size += 1
             for idx, element in enumerate(elements[:-1]):
-                element.next = elements[idx+1]
-            elements[-1].next = None
+                elements[idx+1].next = element
+                # print(f'{elements[idx+1]} --> {element}')
+            elements[0].next = None
                 
-            self.head = elements[0] 
-            self.tail = elements[1:]
-            self.end = elements[-1]
-            self.size = len(elements)
+            self.head = elements[-1] 
+            self.tail = LinkedList(elements[:-1])
+            self.end = elements[0]
+            self.size = size
             
     def to_list(self):
         # cur = self.head 
@@ -46,7 +52,7 @@ class LinkedList:
         # 
         
     def __iter__(self):
-        cur = self.head 
+        cur = self.head
         
         while cur is not None:
             yield cur.datum 
@@ -56,16 +62,34 @@ class LinkedList:
         res = ''
         current = self.head
         while current:
-            res += str(self.datum) + ' -> '
+            res += str(current.datum) + ' -> '
             current = current.next
-        return res .rstrip(' -> ')
+        return res.rstrip(' -> ')
+    
+    def append(self, element):
+        if not isinstance(element, LinkedNode):
+            element = LinkedNode(self.size+1, element)
+        
+        if self.size == 0:
+            self.head = element
+            self.tail = element
+            self.end = element
+        else:
+            self.end.next = element
+        self.size += 1
+    
+    def pop_from_head(self):
+        res = self.head.datum
+        self.head = self.head.next
+        self.size -= 1
+        return res
         
 class DoublyLinkedNode(Node):
     def __init__(self, node_id, datum, prev = None, next = None):
-        self.node_id = node_id 
+        self.node_id = node_id
         self.datum = datum
-        self.next = next 
-        self.prev = prev 
+        self.next = next
+        self.prev = prev
 
 class DoublyLinkedList:
     def __init__(self, elements):
@@ -88,3 +112,8 @@ class DoublyLinkedList:
 
         return res 
 
+if __name__ == '__main__':
+    lst = LinkedList([1,2,3,4])
+    
+    assert lst.head.datum == 1 
+    assert lst.head.next.next.datum == 3
