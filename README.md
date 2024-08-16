@@ -203,7 +203,7 @@ SeSAC_Python_Study/
 |09|mydate|[mydate](./Python_Advanced/practice/mydate)|날짜 간격 구하는 함수 구현 실습||
 |10|game|[game](./Python_Advanced/practice/game)|게임 구현 실습||
 |11|sorting|[sorting](./Python_Advanced/practice/sorting)|정렬 알고리즘 학습 및 실습||
-|12|ADT(Queue, Stack)|[ADT(Queue, Stack)](./Python_Advanced/practice/algorithm-in-python-master)|ADT, 자료구조 학습 및 실습|큐, 스택, 링크드리스트|
+|12|ADT(Queue, Stack)|[ADT(Queue, Stack)](./Python_Advanced/practice/algorithm-in-python-master)|ADT, Data Structure 학습 및 실습|ADT(큐, 스택), Data Structure(Python List, Linked List, Doubly Linked List)|
 |13|||||
 |14|||||
 </details>
