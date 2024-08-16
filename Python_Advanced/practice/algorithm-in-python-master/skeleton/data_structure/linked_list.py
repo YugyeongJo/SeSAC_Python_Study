@@ -66,7 +66,7 @@ class LinkedList:
             current = current.next
         return res.rstrip(' -> ')
     
-    def append(self, element):
+    def append_to_tail(self, element):
         if not isinstance(element, LinkedNode):
             element = LinkedNode(self.size+1, element)
         
@@ -77,6 +77,38 @@ class LinkedList:
         else:
             self.end.next = element
         self.size += 1
+    
+    def insert(self, element):
+        if not isinstance(element, LinkedNode):
+            element = LinkedNode(self.size+1, element)
+            
+        if self.size == 0:
+            pass
+        else:
+            last = self.head 
+            cur = self.head 
+            
+            while cur is not None:
+                if cur.datum[1] >= element.datum[1]:
+                    last = cur
+                    cur = cur.next 
+                else:
+                    # print('last', last, element, self.head)
+                    break
+            if last == self.head:
+                element.next = self.head 
+                self.head = element 
+            elif last == self.end:
+                last.next = element 
+                self.end = element
+            else:
+                element.next = last.next 
+                last.next = element
+            
+            self.size += 1     
+            
+            
+            
     
     def pop_from_head(self):
         res = self.head.datum

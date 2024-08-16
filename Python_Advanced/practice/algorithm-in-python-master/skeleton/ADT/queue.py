@@ -40,7 +40,7 @@ class Queue:
             # self.linked_list.size += 1
             # self.linked_list.LinkedNode(self.size(), elem) 
             # print(self.linked_list.size) # n 
-            self.linked_list.append(elem)
+            self.linked_list.append_to_tail(elem)
             # print(self.linked_list.size) # n+1 
 
     def dequeue(self):
@@ -63,10 +63,11 @@ class Queue:
             return self.linked_list.size
     
     def is_empty(self):
-        if self.backend == list:
-            return self.list == []
-        elif self.backend == LinkedList:
-            return self.linked_list.head == None and self.linked_list.end == None
+        return len(self.elements()) == 0
+        # if self.backend == list:
+        #     return self.list == []
+        # elif self.backend == LinkedList:
+        #     return self.linked_list.head == None and self.linked_list.end == None
 
     def __str__(self):
         return str(self.elements())
@@ -86,13 +87,14 @@ class PriorityQueue:
         if self.backend == list:
             self.list = list(sorted_list)
         elif self.backend == LinkedList:
-            pass
+            self.linked_list = LinkedList(list(sorted_list))
+
 
     def elements(self):
         if self.backend == list:
             return self.list 
         elif self.backend == LinkedList:
-            pass
+            return list(self.linked_list)[::-1]
     
     def enqueue(self, elem):
         if self.backend == list:
@@ -103,31 +105,32 @@ class PriorityQueue:
             else:
                 self.list.append(elem)
         elif self.backend == LinkedList:
-            pass
+            self.linked_list.insert(elem)
 
     def dequeue(self):
         if self.backend == list:
             return self.list.pop()
         elif self.backend == LinkedList:
-            pass
+            return self.linked_list.pop_from_head()
                 
     def front(self):
         if self.backend == list:
             return self.list[-1]
         elif self.backend == LinkedList:
-            pass
+            return self.linked_list.head.datum
 
     def size(self):
         if self.backend == list:
             return len(self.list)
         elif self.backend == LinkedList:
-            pass
+            return self.linked_list.size
     
     def is_empty(self):
-        if self.backend == list:
-            return self.list == []
-        elif self.backend == LinkedList:
-            pass
+        return len(self.elements()) == 0
+        # if self.backend == list:
+        #     return self.list == []
+        # elif self.backend == LinkedList:
+        #     return self.linked_list.size == 0
 
     def __str__(self):
         return str(self.elements())
@@ -139,7 +142,7 @@ class PriorityQueue:
 
 if __name__ == '__main__':
     from code import interact 
-    available_backends = [list]
+    available_backends = [LinkedList]
     # available_backends = [list, LinkedList, DoublyLinkedList]
 
     for backend in available_backends:
@@ -173,13 +176,13 @@ if __name__ == '__main__':
         #     print(q1.linked_list, "///", q2.linked_list)
     
         q2 = PriorityQueue(('c',1), ('d',4), ('e',2), ('b',3), backend = backend)
-        
+
         assert q2.elements() == [('c',1), ('e',2), ('b',3), ('d',4)]
         assert q2.size() == 4 
         assert q2.front() == ('d', 4) 
         assert not q2.is_empty()
         q2.dequeue()
-
+        
         assert q2.elements() == [('c',1), ('e',2), ('b',3)]
         assert q2.size() == 3 
         assert q2.front() == ('b', 3) 
@@ -190,9 +193,14 @@ if __name__ == '__main__':
         print(q2)
         q2.enqueue(('g', 3))
         print(q2)
+        q2.enqueue(('h', -1))
+        print(q2, q2.linked_list.end.datum)
 
-        assert q2.elements() == [('c',1), ('e',2), ('g', 3), ('b',3), ('f', 5)]
+
+        assert q2.elements() == [('h',-1), ('c',1), ('e',2), ('g', 3), ('b',3), ('f', 5)]
         
+        q2.dequeue()
+        print(q2)
         q2.dequeue()
         print(q2)
         q2.dequeue()
@@ -205,4 +213,3 @@ if __name__ == '__main__':
         print(q2)
 
         assert q2.is_empty()
-        ###### 강사님께 질문 "순서 이게 맞나요?"
