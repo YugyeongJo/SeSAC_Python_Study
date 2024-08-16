@@ -107,9 +107,6 @@ class LinkedList:
             
             self.size += 1     
             
-            
-            
-    
     def pop_from_head(self):
         res = self.head.datum
         self.head = self.head.next
