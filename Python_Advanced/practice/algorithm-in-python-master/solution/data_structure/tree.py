@@ -39,7 +39,7 @@ class Tree:
         yield self.root.datum
 
         for child in self.children:
-            for n in child.iter_nodes():
+            for n in child:
                 yield n 
 
     def insert(self, address, elem):
