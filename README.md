@@ -218,3 +218,6 @@ SeSAC_Python_Study/
 </details>
 
 ## 📝참고자료
+|구분|링크|설명|비고|
+|--|--|--|--|
+|강사님 Github|[githubprin](https://github.com/githubprin)|강사님 Github - 실습자료 공유||
