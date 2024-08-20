@@ -36,11 +36,7 @@ SeSAC_Python_Study/
 │   └── practice/
 │          └──numeral_system.py
 └── Python_Advanced/
-    ├── class.py
-    ├── 
-    ├── 
-    ├── 
-    ├── 
+    ├── class.py 
     ├── practice/
     │      ├── parentheses/
     │      │        ├── skeleton/
@@ -111,35 +107,26 @@ SeSAC_Python_Study/
     │      │                       ├── quick_sort.png
     │      │                       ├── sorted.png
     │      │                       └── tim_sort.png   
-    │      ├── algorithm-in-python-master/    
-    │      │        ├── skeleton
-    │      │        │       ├── ADT/
-    │      │        │       ├── data_structure/
-    │      │        │       ├── bank_simulation.py
-    │      │        │       └── os_tree_structure.py
-    │      │        ├── solution
-    │      │        │       ├── ADT/
-    │      │        │       ├── data_structure/
-    │      │        │       └── os_tree_structure.py
-    │      │        └── /   
-    │      ├── /    
-    │      │        ├── 
-    │      │        └── 
-    │      ├── /    
-    │      │        ├── 
-    │      │        └── 
-    │      ├── /    
-    │      │        ├── 
-    │      │        └── 
+    │      └── algorithm-in-python-master/    
+    │               ├── skeleton
+    │               │       ├── ADT/
+    │               │       ├── data_structure/
+    │               │       ├── resources/
+    │               │       ├── bank_simulation.py
+    │               │       ├── formula.py
+    │               │       ├── global_variables.py
+    │               │       └── os_tree_structure.py
+    │               └── solution
+    │                      ├── ADT/
+    │                      ├── data_structure/
+    │                      └── os_tree_structure.py
     └── data_file/    
             ├── parentheses.zip
             ├── finder.zip
             ├── tictactoe_without_class_final.zip
             ├── stock_simulation.zip
             ├── level_test.zip
-            ├── python_camp.zip
-            ├──
-            └── 
+            └── python_camp.zip
 ```
 
 ## 💻 Python Basic File
@@ -205,7 +192,7 @@ SeSAC_Python_Study/
 |09|mydate|[mydate](./Python_Advanced/practice/mydate)|날짜 간격 구하는 함수 구현 실습||
 |10|game|[game](./Python_Advanced/practice/game)|게임 구현 실습||
 |11|sorting|[sorting](./Python_Advanced/practice/sorting)|정렬 알고리즘 학습 및 실습||
-|12|ADT(Queue, Stack)|[ADT(Queue, Stack)](./Python_Advanced/practice/algorithm-in-python-master)|ADT, Data Structure 학습 및 실습|ADT(큐, 스택, 트리), Data Structure(Python List, Linked List, Doubly Linked List, Tree)|
+|12|ADT(Queue, Stack)|[ADT(Queue, Stack)](./Python_Advanced/practice/algorithm-in-python-master)|ADT, Data Structure 학습 및 실습|ADT(큐, 스택, 트리, 그래프), Data Structure(Python List, Linked List, Doubly Linked List, Tree, Graph)|
 |13|||||
 |14|||||
 </details>
