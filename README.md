@@ -3,7 +3,7 @@
 ## 📖 소개
 
 SeSAC_Python_Study 레포지토리는 Python 언어를 학습한 내용을 담고 있습니다.  
-Python의 기초 구문과 심화 실습(알고리즘 등)을 다룹니다.
+Python의 기초 구문과 심화 실습(자료구조, 알고리즘 등)을 다룹니다.
 
 ## 🛠️ Tech Stack
 
