@@ -27,7 +27,7 @@ class Graph:
             self.adj_list = AdjList(V, E)
         
         elif backend == 'adjacnet_matrix':
-            pass 
+            self.matrix = AdjMatrix(V, E)
 
     def add_vertex(self, v):
         assert isinstance(v, Vertex)
@@ -36,18 +36,33 @@ class Graph:
             self.V.append(v)
         
         elif self.backend == 'adjacent_list':
-            # assert v not in self.adj_list.adj_list  
-            # self.adj_list.adj_list[v] = []
-            ######### function을 만들면 이렇게 바로 해버려도 되나? 검증 없이?
+            assert v not in self.adj_list.adj_list  
+            
             if v not in self.adj_list.adj_list:
                 self.adj_list.add_vertex(v)
-            # 그래프의 정점 리스트에도 추가
+                
             if v not in self.V:
                 self.V.append(v)
         
         elif self.backend == 'adjacnet_matrix':
-            pass
-    
+            assert v not in self.matrix.vertex2index
+            
+            if v not in self.matrix.vertex2index:
+                idx = len(self.matrix.vertex2index)
+                
+                # vertex2index에 추가된 v 추가해주기
+                self.matrix.vertex2index[v] = idx
+                
+                # matrix에 모든 행의 마지막 열에 0 1개씩 넣어주기
+                for row in self.matrix.matrix:
+                    row.append(0)
+                
+                # matrix에 v의 행 추가해서 모든 값에 0 넣어주기
+                add_row = [0] * (idx+1)
+                self.matrix.matrix.append(add_row)
+                
+                self.matrix.matrix[idx][idx] = 1
+                
     def remove_vertex(self, v):
         assert isinstance(v, Vertex)
         
@@ -58,17 +73,25 @@ class Graph:
             self.V.remove(v)
         
         elif self.backend == 'adjacent_list':
-            pass
+            # adj_list에서 v를 value로 가진 값들을 먼저 삭제(간선 먼저 삭제)
+            for neighbors in self.adj_list.adj_list.values():
+                if v in neighbors:
+                    neighbors.remove(v)
+                    
+            # 간선 모두 삭제한 뒤 최종적으로 v 정점 삭제
+            if v in self.adj_list.adj_list:
+                del self.adj_list.adj_list[v]
         
         elif self.backend == 'adjacnet_matrix':
             pass
 
     def add_edge(self, e):
         assert isinstance(e, Edge)
-        assert e.from_vertex in V
-        assert e.to_vertex in V
+        
         
         if self.backend == 'VE':
+            assert e.from_vertex in V
+            assert e.to_vertex in V
             self.E.append(e)
         
         elif self.backend == 'adjacent_list':
@@ -81,14 +104,21 @@ class Graph:
                 self.adj_list.add_vertex(e.to_vertex)
             
             # 출발 정점의 인접 리스트에 도착 정점을 추가
-            self.adj_list.adj_list[e.from_vertex].append(e.to_vertex)
             
             if e not in self.E:
                 self.E.append(e)
-            ###### 그렇다면 adj_list가 잘 된건지 어떻게 확인할 수 있나요?
         
         elif self.backend == 'adjacnet_matrix':
-            pass
+            assert e.from_vertex in self.matrix.vertex2index and e.to_vertex in self.matrix.vertex2index
+            
+            # 행과 열의 위치를 찾아서 해당 부분을 1로 변경해주기
+            row_idx = self.matrix.vertex2index[e.from_vertex]
+            col_idx = self.matrix.vertex2index[e.to_vertex]
+            
+            # import code 
+            # code.interact(local = locals())
+            
+            self.matrix.matrix[row_idx][col_idx] = 1
 
     def remove_edge(self, e):
         assert isinstance(e, Edge)
@@ -97,8 +127,14 @@ class Graph:
             self.E.remove(e)
         
         elif self.backend == 'adjacent_list':
-            pass 
-        
+            # from_vertex는 key와 to_vertices는 value와 모두 같으면 삭제
+            from_vertex = e.from_vertex
+            to_vertex = e.to_vertex
+            
+            for tv in self.adj_list.adj_list[from_vertex]:
+                if tv == to_vertex:
+                    self.adj_list.adj_list[from_vertex].remove(tv)
+            
         elif self.backend == 'adjacnet_matrix':
             pass
 
@@ -108,7 +144,7 @@ class Graph:
             return self.V
         
         elif self.backend == 'adjacent_list':
-            pass 
+            return list(self.adj_list.adj_list.keys()) 
         
         elif self.backend == 'adjacnet_matrix':
             pass
@@ -121,7 +157,11 @@ class Graph:
             return self.E
         
         elif self.backend == 'adjacent_list':
-            pass
+            edges = []
+            for from_vertex, to_vertices in self.adj_list.adj_list.items():
+                for to_vertex in to_vertices:
+                    edges.append(Edge(from_vertex, to_vertex))
+            return edges
         
         elif self.backend == 'adjacnet_matrix':
             pass
@@ -135,7 +175,8 @@ class Graph:
             return [e.to_vertex for e in self.E if e.from_vertex == v]
         
         elif self.backend == 'adjacent_list':
-            pass
+            if v in self.adj_list.adj_list:
+                return self.adj_list.adj_list[v]
         
         elif self.backend == 'adjacnet_matrix':
             pass
@@ -215,8 +256,16 @@ class Graph:
 
     def show(self):
         import matplotlib.pyplot as plt
-        nodes = self.V 
-        edges = self.E 
+        if self.backend == 'VE':
+            nodes = self.V 
+            edges = self.E 
+        elif self.backend == 'adjacent_list':
+            nodes = self.adj_list.get_nodes()
+            edges = self.adj_list.get_edges()
+        elif self.backend == 'adjacent_matrix':
+            nodes = self.matrix.get_nodes()
+            edges = self.matrix.get_edges()
+            
         positions = Graph.spring_layout(nodes, edges)
         plt.figure(figsize=(8, 6))
         ax = plt.gca()
@@ -256,11 +305,15 @@ if __name__ == '__main__':
     V = [v1, v2]
     E = [e1]
 
-    g1 = Graph(V, E, backend='adjacent_list')
-
+    # g1 = Graph(V, E)
+    # g1 = Graph(V, E, backend='adjacent_list')
+    g1 = Graph(V, E, backend='adjacnet_matrix')
+    
+    # print("matrix nodes : ", g1.matrix.vertex2index)
     g1.add_vertex(v3)
     g1.add_vertex(v4)
     g1.add_vertex(v5)
+    # print("matrix nodes after add_vertex : ", g1.matrix.vertex2index)
 
     g1.add_edge(e2)
     g1.add_edge(e3)
@@ -268,15 +321,20 @@ if __name__ == '__main__':
     g1.add_edge(e5)
     g1.add_edge(e6)
 
-    print(g1.adj_list)
+    # print(g1.matrix)
+    # print("matrix nodes after add_edge : ", g1.matrix.vertex2index)
+    # print(g1.adj_list)
     # g1.show()
     
     # g1.remove_vertex(v1)
+    # g1.remove_edge(e1)
     # g1.remove_edge(e2)
     # g1.remove_edge(e3)
     # g1.remove_edge(e4)
     # g1.remove_edge(e5)
     # g1.remove_edge(e6)
+    # print(g1.adj_list)
+    # g1.show()
     
     # print(g1.get_vertices())
     # print(g1.get_edges())
@@ -289,4 +347,8 @@ if __name__ == '__main__':
     # print("BFS:")
     # for vertex in g1.bfs(v1):
     #     print(vertex)
+    
+    # 질문 정리
+    # 1) 시각화 구현이 왜 안되는걸까요....
+    # 2) 행열 add함수는 이렇게 되면 되는건지 확인 
 

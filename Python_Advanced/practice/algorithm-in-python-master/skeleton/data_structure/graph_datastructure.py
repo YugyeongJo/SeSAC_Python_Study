@@ -50,6 +50,16 @@ class AdjList:
         for edge in E:
             self.adj_list[edge.from_vertex].append(edge.to_vertex)
             
+    def get_nodes(self):
+        return list(self.adj_list.keys())
+
+    def get_edges(self):
+        res = []
+        for from_vertex, to_vertices in self.adj_list.items():
+            for to_vertex in to_vertices:
+                res.append(Edge(from_vertex, to_vertex))
+        return res 
+            
     def add_vertex(self, v):
         assert v not in self.adj_list
         self.adj_list[v] = []
@@ -64,4 +74,48 @@ class AdjList:
 
 class AdjMatrix:
     def __init__(self, V, E):
-        pass 
+        n = len(V)
+        
+        vertex2index = {}
+        for idx, v in enumerate(V):
+            vertex2index[v] = idx 
+        
+        matrix = []
+        for i in range(n):
+            row = []
+            for j in range(n):
+                row.append(0)
+            matrix.append(row)
+        
+        for e in E:
+            i = vertex2index[e.from_vertex]
+            j = vertex2index[e.to_vertex]
+            
+            matrix[i][j] = 1
+        
+        for i in range(n):
+            matrix[i][i] = 1
+        
+        self.matrix = matrix 
+        self.vertex2index = vertex2index
+        
+    def get_nodes(self):
+        return list(self.vertex2index.keys())
+    
+    def get_edges(self):
+        res = []
+        nodes = self.get_nodes()
+        
+        for i, from_vertex in enumerate(nodes):
+            for j, to_vertex in enumerate(nodes):
+                if i != j and self.matrix[i][j] == 1:
+                    res.append(Edge(from_vertex, to_vertex))
+        return res
+        
+    def __str__(self):
+        return str(self.matrix)
+    
+    def __eq__(self, other):
+        if isinstance(other, AdjMatrix):
+            return self.matrix == other.matrix
+        return False
