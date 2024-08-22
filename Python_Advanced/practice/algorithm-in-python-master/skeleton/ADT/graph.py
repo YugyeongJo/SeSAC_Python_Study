@@ -6,7 +6,7 @@ try:
 except ModuleNotFoundError:
     from data_structure.graph_datastructure import AdjList, AdjMatrix, Vertex, Edge
 
-from debug_shell import debug_shell
+# from debug_shell import debug_shell
 
 class Graph:
     AVAILABLE_BACKENDS = ['VE', 'adjacent_list', 'adjacent_matrix']
