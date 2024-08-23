@@ -12,6 +12,7 @@ class Vertex:
         return hash((self.node_id, self.datum))
 
     def __str__(self):
+        print(type(self))
         return str(self.datum)
     
     # 딕셔너리나 리스트안에서 print()
