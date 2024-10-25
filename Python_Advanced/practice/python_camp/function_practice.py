@@ -512,3 +512,30 @@ def double(x):
     return 2*x
 
 print(cache_to_pickle2(double)(2))
+
+# =========================
+
+
+def cache_to_pickle2(function):
+    
+    def f(x):
+        pickle_path = 'pickle_path'
+        file_path = f'{pickle_path}/{x}.pickle'
+        
+        if not os.path.exists(pickle_path):
+            os.makedirs(pickle_path)
+            
+        if not os.path.exists(file_path):
+            res = function(x)
+            pickle.dump(res, open(file_path, 'wb+'))
+            return res
+        else:
+            res = pickle.load(open(file_path, 'rb'))
+            return res
+    return f
+
+@cache_to_pickle2
+def double(x):
+    return 2*x
+
+double(2)
